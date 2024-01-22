@@ -19,7 +19,7 @@ jobs:
         run: docker-compose build frontend
 
       - name: Tag Docker image
-        run: docker tag vmdo_frontend ezekielkaeyros/vmdo_vmdo-frontend
+        run: docker tag vmdo_vmdo-frontend ezekielkaeyros/vmdo_vmdo-frontend
 
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
