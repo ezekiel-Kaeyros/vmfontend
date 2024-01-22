@@ -1,5 +1,5 @@
 {
-    "family": "task-vmdo",
+    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:108165532263:task-definition/task-vmdo:5",
     "containerDefinitions": [
         {
             "name": "vmdo-deploy",
@@ -24,8 +24,27 @@
             "ulimits": []
         }
     ],
+    "family": "task-vmdo",
     "taskRoleArn": "arn:aws:iam::108165532263:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::108165532263:role/ecsTaskExecutionRole",
+    "revision": 5,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
     "requiresCompatibilities": [
         "EC2"
     ],
@@ -34,5 +53,8 @@
     "runtimePlatform": {
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
-    }
+    },
+    "registeredAt": "2024-01-22T14:44:09.960Z",
+    "registeredBy": "arn:aws:iam::108165532263:user/Dombissi",
+    "tags": []
 }
