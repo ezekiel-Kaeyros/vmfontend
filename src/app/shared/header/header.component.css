@@ -1,0 +1,175 @@
+@import "@fontsource/permanent-marker";
+@import "@fontsource/poppins";
+
+/*******************************************************/
+/* Toolbar */
+.toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 5%;
+  background: #000;
+  z-index: 9;
+}
+@media (max-width: 992px) {
+  .toolbar {
+  }
+}
+@media (max-width: 768px) {
+  .toolbar {
+  }
+}
+@media (max-width: 576px) {
+  .toolbar {
+  }
+}
+
+.edie-brand {
+  cursor: pointer;
+  color: #FF8F0C;
+  font-family: 'Permanent Marker';
+  font-size: 42px;
+}
+@media (max-width: 992px) {
+  .edie-brand {
+    font-size: 32px;
+  }
+}
+@media (max-width: 768px) {
+  .edie-brand {
+    font-size: 24px;
+  }
+
+  li a {
+    font-size: 0.8rem;
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+li {
+  list-style: none;
+}
+
+li, li a, li span li button {
+  color: #FF8F0C;
+  font-weight: 300;
+  font-size: 1rem;
+}
+li span {
+  font-size: 0.8rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar__nav {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.toolbar__nav .login {
+  display: none;
+}
+
+.lg a {
+  font-size: 0.8rem;
+}
+
+.side-menu {
+  color: #FF8F0C;
+  display: none;
+}
+@media (max-width: 576px) {
+  .side-menu {
+    display: block;
+  }
+
+  .toolbar__nav ul {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  li a {
+    font-size: 0.8rem;
+  }
+
+  li span {
+    font-size: 0.7rem;
+  }
+}
+
+/* ************* DROP DOWN MENU ************** */
+.dropdown-menu {
+  background: #FF8F0C;
+  font-family: 'Permanent Marker';
+}
+.dropdown-menu ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown-menu a {
+  color: #000;
+  font-family: 'Permanent Marker';
+}
+
+mat-toolbar.dropdown-menu {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+@media (max-width: 576px) {
+  mat-toolbar.dropdown-menu {
+    display: none;
+  }
+}
+
+@keyframes dropdown {
+  0% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  100% {opacity: 1;
+    transform: translateY(0);
+    position: fixed;
+  }
+}
+@keyframes closemenu {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+    position: fixed;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+}
+
+.dropdown-menu button {
+  color: #000;
+}
+
+.dropdown-menu a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.move-down {
+  animation: dropdown 400ms ease-in-out forwards;
+}
+.move-up {
+  animation: closemenu 400ms ease-in-out forwards;
+}

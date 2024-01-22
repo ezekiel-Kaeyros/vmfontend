@@ -1,0 +1,128 @@
+<div class="course-list">
+    <div *ngIf="showSpinner" class="progress-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="intro">
+        <h2 class="mat-display-2">Liste der Kurse</h2>
+    </div>
+
+    <mat-toolbar class="admin-toolbar">
+      <ul>
+          <li>
+              <a mat-button routerLink="/projects/list">Projekte verwalten</a>
+          </li>
+      </ul>
+    </mat-toolbar>
+
+    <div class="list">
+        <div mat-icon-button mat-card-avatar class="create" routerLink="create">
+          <mat-icon color="primary">add_circle_outline</mat-icon>
+        </div>
+        <div class="mat-display-1">
+            <!-- <mat-icon color="primary">list</mat-icon><br> -->
+            Kursliste
+        </div>
+    
+        <mat-form-field>
+            <input (keyup)="applyFilter($event)" matInput placeholder="Filter">
+        </mat-form-field>
+    
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+        
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef> No. </th>
+                  <td mat-cell *matCellDef="let i = index"> {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i + this.paginator.pageIndex * this.paginator.pageSize}} </td>
+                </ng-container>
+              
+                <!-- Title Column -->
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Titel </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.title}}</a> </td>
+                </ng-container>
+
+                <!-- Description Column -->
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef> Beschreibung </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.description}}</a> </td>
+                </ng-container>
+
+                <!-- Start date Column -->
+                <ng-container matColumnDef="start_date">
+                  <th mat-header-cell *matHeaderCellDef> Anfangsdatum </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.start_date}}</a> </td>
+                </ng-container>
+
+                <!-- End date Column -->
+                <ng-container matColumnDef="end_date">
+                  <th mat-header-cell *matHeaderCellDef> Enddatum </th>
+                  <td mat-cell *matCellDef="let course">
+                    <a routerLink="{{course.id}}">{{course.end_date}}</a> </td>
+                </ng-container>
+
+                <!-- Course fees Column -->
+                <ng-container matColumnDef="course_fees">
+                  <th mat-header-cell *matHeaderCellDef> Kursgebühr </th>
+                  <td mat-cell *matCellDef="let course">
+                    <a routerLink="{{course.id}}">{{course.course_fees}}</a> </td>
+                </ng-container>
+              
+                <!-- Link Column -->
+                <ng-container matColumnDef="link">
+                  <th mat-header-cell *matHeaderCellDef> Link </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.link}}</a> </td>
+                </ng-container>
+
+                <!-- Author Column -->
+                <ng-container matColumnDef="author">
+                  <th mat-header-cell *matHeaderCellDef> Autor </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.author}}</a> </td>
+                </ng-container>
+    
+                <!-- Created at Column -->
+                <ng-container matColumnDef="createdAt">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Erstellt am </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.createdAt | date: 'MM/dd/yyyy'}}</a> </td>
+                </ng-container>
+    
+                <!-- Updated at Column -->
+                <!-- <ng-container matColumnDef="editedAt">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Bearbeitet am </th>
+                  <td mat-cell *matCellDef="let course"> 
+                    <a routerLink="{{course.id}}">{{course.editedAt | date: 'MM/dd/yyyy'}}</a> </td>
+                </ng-container> -->
+        
+                <!-- Edit Column -->
+                <ng-container matColumnDef="edit">
+                  <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+                  <td mat-cell *matCellDef="let course">
+                    <button mat-icon-button routerLink="{{course.id}}/edit">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+        
+                <!-- Delete Column -->
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef> Löschen </th>
+                  <td mat-cell *matCellDef="let course">
+                    <button mat-icon-button (click)="deleteCourse(course)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

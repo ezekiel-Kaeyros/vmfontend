@@ -1,0 +1,76 @@
+<div class="footer">
+
+    <div class="first-block">
+        <div class="menu">
+            <h4>Menu</h4>
+            <ul>
+                <li>
+                    <a routerLink="/home">Home</a>
+                </li>
+                <li>
+                    <a routerLink="/program">Programm</a>
+                </li>
+                <li>
+                    <a href="https://bildungswerk-vielfalt.com/login/index.php" target="_blank">Lernplattform</a>
+                </li>
+                <li>
+                    <a routerLink="/education">Bildungsberatung</a>
+                </li>
+                <li>
+                    <a routerLink="/projects">Projekte</a>
+                </li>
+                <li>
+                    <a routerLink="/toolbox-pages">Toolbox</a>
+                </li>
+            </ul>
+        </div>
+        <div class="aboutus">
+            <h4>Info</h4>
+            <ul>
+                <li><a routerLink="/impressum">Impressum</a> </li>
+                <li><a routerLink="/datenschutz">Datenschutz</a> </li>
+            
+                <!-- <li>Prof. Dr. Ümit Koşan & Şaziye Altundal-Köse</li>
+                <li>Kati Stüdemann</li>
+                <li>Zur Vielfalt 21, 44147 Dortmund</li> -->
+            </ul>
+        </div>
+
+        <!-- CONTACTS -->
+        <div class="footer__contact">
+            <h4>Kontakt</h4>
+            <ul>
+                <li>
+                    <i class='fa fa-phone'></i> +49 (0)231 28678165
+                </li>
+                <li>
+                    <i class='fa fa-envelope'></i> bildungswerk-vielfalt@vmdo.de
+                </li>
+                <li>
+                    <i class='fa-solid fa-location-dot'></i> 
+                    <button mat-button (click)="openDialog()" class="mapbtn">Zur Vielfalt 21, 44147 Dortmund</button>
+                </li>
+                <!-- <li>
+                    <a class="social" href="https://de-de.facebook.com/BildungswerkVielfalt/" target="_blank">
+                        <i class="fab fa-facebook"></i> Facebook
+                    </a>
+                </li> -->
+                <li>
+                    <a class="social" href="https://www.instagram.com/bildungswerk_vielfalt/" target="_blank">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- LOGO -->
+    <div class="footer__logo">
+        <img src="assets/images/bwv-logo-lang-black.png" alt="BWV bildungswerk-vielfalt Logo">
+    </div>
+    <div class="second-block">
+        <ul>
+            <li>Design by Kaeyros analytics</li>
+            <li>&copy; {{ year }} BWV ALL RIGHTS RESERVED</li>
+        </ul>
+    </div>
+</div>

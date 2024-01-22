@@ -1,0 +1,41 @@
+.about-us {
+    width: 60%;
+    margin: auto;
+    margin-top: 4rem;
+}
+@media (max-width: 992px) {
+    .about-us {
+        width: 70%;
+    }
+}
+@media (max-width: 768px) {
+    .about-us {
+        width: 80%;
+    }
+}
+@media (max-width: 576px) {
+    .about-us {
+        width: 90%;
+    }
+}
+
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    text-align: center;
+}
+
+.content-page {
+    color: whitesmoke;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    font-weight: 300;
+
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 2.2rem;
+}
+
+.content-page p {
+    margin-bottom: 2.2rem;
+}

@@ -1,0 +1,13 @@
+.four-oh-four {
+    width: 80%;
+    margin: auto;
+    color: #ff8f0c;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-display-2 {
+    font-family: 'Permanent Marker';
+}

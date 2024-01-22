@@ -1,0 +1,79 @@
+.impressum {
+    width: 60%;
+    margin: auto;
+    margin-top: 4rem;
+}
+@media (max-width: 992px) {
+    .impressum {
+        width: 70%;
+    }
+}
+@media (max-width: 768px) {
+    .impressum {
+        width: 80%;
+    }
+}
+@media (max-width: 576px) {
+    .impressum {
+        width: 90%;
+    }
+}
+
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    text-align: center;
+}
+
+.mat-display-1 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    font-size: 1.8rem;
+    margin-bottom: 0.3rem;
+}
+
+.content-page {
+    color: whitesmoke;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    font-weight: 300;
+
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 2.2rem;
+}
+
+.content-page div {
+    margin-bottom: 1.5rem;
+}
+
+.content-page p {
+    margin-bottom: 2.2rem;
+}
+
+ul span {
+    font-weight: 400;
+}
+
+ul li {
+    margin-left: 1.5rem;
+}
+
+ul {
+    margin: 0 !important;
+    list-style-type: none;
+}
+
+p {
+    margin-bottom: 1.2rem !important;
+}
+
+a, .map {
+    text-decoration: underline #ff8f0c;
+    text-underline-offset: 0.4rem;
+    color: whitesmoke;
+}
+
+.map {
+    cursor: pointer;
+}

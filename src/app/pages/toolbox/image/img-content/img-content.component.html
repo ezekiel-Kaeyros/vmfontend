@@ -1,0 +1,23 @@
+<div class="textarea">
+    <mat-form-field appearance="outline">
+      <textarea maxlength="5000" matInput #input (keyup)="countInputCharacter($event)" class="input-box">
+        {{speech.text}}
+      </textarea>
+      <button
+          matPrefix
+          mat-icon-button>
+          <mat-icon>mic</mat-icon>
+      </button>
+      <span matSuffix>{{ numberOfInputCharacter + ' / 5000' }}</span>
+      <button
+          matSuffix
+          mat-icon-button>
+          <mat-icon>edit</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <textarea matInput class="result-box">
+        {{textFound}}
+      </textarea>
+    </mat-form-field>
+</div>

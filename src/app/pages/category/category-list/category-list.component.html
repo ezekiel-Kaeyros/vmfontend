@@ -1,0 +1,78 @@
+<div class="category-list">
+    <div *ngIf="showSpinner" class="progress-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+    <div class="intro">
+        <h2 class="mat-display-2">Liste der Kategory</h2>
+    </div>
+
+    <mat-toolbar class="admin-toolbar">
+        <ul>
+            <li>
+                <a mat-button routerLink="/courses">Kurs verwalten</a>
+            </li>
+        </ul>
+    </mat-toolbar>
+
+    <div class="list">
+        <div mat-icon-button mat-card-avatar class="create" routerLink="/category/create">
+          <mat-icon color="primary">add_circle_outline</mat-icon>
+        </div>
+        <div class="mat-display-1">
+            Kategory liste
+        </div>
+    
+        <mat-form-field>
+            <input (keyup)="applyFilter($event)" matInput placeholder="Filter">
+        </mat-form-field>
+    
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+        
+                <!-- Position Column -->
+                <ng-container matColumnDef="position">
+                  <th mat-header-cell *matHeaderCellDef> No. </th>
+                  <td mat-cell *matCellDef="let i = index"> {{this.paginator.pageIndex == 0 ? i + 1 : 1 + i + this.paginator.pageIndex * this.paginator.pageSize}} </td>
+                </ng-container>
+              
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                  <td mat-cell *matCellDef="let category"> 
+                    <a routerLink="{{category.id}}">{{category.name}}</a> </td>
+                </ng-container>
+
+                <!-- Description Column -->
+                <ng-container matColumnDef="description">
+                  <th mat-header-cell *matHeaderCellDef> Beschreibung </th>
+                  <td mat-cell *matCellDef="let category"> 
+                    <a routerLink="{{category.id}}">{{category.description}}</a> </td>
+                </ng-container>
+        
+                <!-- Edit Column -->
+                <ng-container matColumnDef="edit">
+                  <th mat-header-cell *matHeaderCellDef> Bearbeiten </th>
+                  <td mat-cell *matCellDef="let category">
+                    <button mat-icon-button routerLink="/category/{{category.id}}/edit">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+        
+                <!-- Delete Column -->
+                <ng-container matColumnDef="delete">
+                  <th mat-header-cell *matHeaderCellDef> Löschen </th>
+                  <td mat-cell *matCellDef="let category">
+                    <button mat-icon-button (click)="deleteCategory(category)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </td>
+                </ng-container>
+              
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

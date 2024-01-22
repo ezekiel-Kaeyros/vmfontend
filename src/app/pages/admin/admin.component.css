@@ -1,0 +1,109 @@
+.education {
+    width: 60%;
+    margin: auto;
+    padding-top: 4rem;
+}
+@media (max-width: 992px) {
+    .education {
+        width: 70%;
+    }
+}
+@media (max-width: 768px) {
+    .education {
+        width: 80%;
+    }
+}
+@media (max-width: 576px) {
+    .education {
+        width: 90%;
+    }
+}
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    margin: auto;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+.mat-display-1 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+}
+.owners {
+    color: whitesmoke;
+    margin: 2rem 0;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.content-page {
+    color: whitesmoke;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    font-weight: 300;
+
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 2rem;
+}
+
+.content-page div {
+    margin-bottom: 2.3rem;
+}
+
+.goal {
+    font-weight: 500;
+    color: #fff;
+}
+
+.actions {
+    color: #ff8f0c;
+    font-size: 1rem;
+}
+
+mat-card {
+    border: 6px solid #ff8f0c;
+    background: #36454f;
+    color: whitesmoke;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: whitesmoke !important;
+   }
+  
+   ::ng-deep.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: #ff8f0c !important;
+  } 
+  
+  ::ng-deep.mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: #ff8f0c !important;
+  }
+
+  mat-label {
+    color: whitesmoke !important;
+    font-weight: 300;
+}
+mat-hint {
+      color: #ff8f0c !important;
+      font-weight: 300;
+}
+
+mat-card-actions{
+    margin-top: 1.5rem;
+}
+mat-card-actions button {
+    background: #ff8f0c !important;
+    color: whitesmoke !important;
+    font-weight: 300;
+    margin-left: 0.5rem !important;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-family: 'Permanent Marker';
+    letter-spacing: 0.2rem;
+    text-transform: capitalize;
+}

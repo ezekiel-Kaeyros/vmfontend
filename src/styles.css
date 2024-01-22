@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+@import "@fontsource/fredoka-one";
+@import "@fontsource/permanent-marker";
+@import "@fontsource/poppins";
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
+
+
+:root
+{
+    --primary-color:#FF8F0C;
+    --secondary-color:#FF8F0C;
+   
+}
+
+html, body { height: 100%;
+ }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-dialog-container {
+    background: linear-gradient(#ffca8c, #f089df)!important;
+ }

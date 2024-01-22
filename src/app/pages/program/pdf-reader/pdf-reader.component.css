@@ -1,0 +1,82 @@
+.pdf-reader {
+    width: 80%;
+    margin: auto;
+    margin-top: 4rem;
+}
+
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    text-align: center;
+}
+
+.download {
+    text-align: right;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+.download a {
+    text-decoration: underline #ff8f0c;
+    text-underline-offset: 0.4rem;
+    font-size: 1.2rem;
+}
+
+pdf-viewer {
+    display: block;
+    height: 46cm;
+}
+@media (max-width: 1200px) {
+    pdf-viewer {
+        height: 34cm;
+    }
+}
+@media (max-width: 1080px) {
+    .pdf-reader {
+        width: 82%;
+    }
+    pdf-viewer {
+        height: 32cm;
+    }
+}
+@media (max-width: 992px) {
+    pdf-viewer {
+        height: 30cm;
+    }
+}
+@media (max-width: 768px) {
+    .pdf-reader {
+        width: 92%;
+    }
+    pdf-viewer {
+        height: 25cm;
+    }
+}
+@media (max-width: 576px) {
+    .pdf-reader {
+        width: 96%;
+    }
+    pdf-viewer {
+        height: 17cm;
+    }
+}
+
+.actions {
+    text-align: center;
+}
+
+.actions span {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: whitesmoke;
+}
+
+.actions button {
+    background: transparent;
+    color: whitesmoke;
+    border: 1px solid whitesmoke;
+}
+
+.actions button:disabled {
+    color: gray;
+    border-color: gray;
+}

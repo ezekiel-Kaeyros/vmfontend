@@ -1,0 +1,39 @@
+<div class="education">
+    <h2 class="mat-display-2">Anmeldeformular für Administratoren</h2>
+   
+    <div class="form">
+        <mat-card>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">
+                    <span>Anmeldung</span>
+                </mat-card-title>
+                <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Benutzername</mat-label>
+                            <input matInput formControlName="username" placeholder="Your username here">
+                            <mat-hint align="end">benutzername</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Passwort</mat-label>
+                            <input type="password" matInput formControlName="password" placeholder="Your password here">
+                            <mat-hint align="end">passwort</mat-hint>
+                        </mat-form-field>
+                    </div>
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            matTooltip="send your credential"
+                            matTooltipShowDelay="500"
+                            matTooltipHideDelay="1000">
+                            Anmelden
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+<div class="create-course">
+    <div class="intro">
+        <h2 class="mat-display-2">Registrieren Sie das Programm mit dem untenstehenden Formular</h2>
+    </div>
+    <div class="form">
+        <mat-card>
+            <div mat-icon-button mat-card-avatar class="list" routerLink="/courses">
+                <mat-icon>list</mat-icon>
+            </div>
+            <!-- <mat-card-header>
+                <button mat-icon-button mat-card-avatar>
+                    <mat-icon>save_as</mat-icon>
+                </button>
+            </mat-card-header> -->
+            <mat-card-content>
+                <mat-card-title class="mat-display-1">
+                    <span>Kurs erstellen</span>
+                </mat-card-title>
+                <form [formGroup]="courseForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Titel</mat-label>
+                            <input matInput formControlName="title" placeholder="Ihr Titel hier">
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group bg-dark mb-3">
+                        <label>Beschreibung</label>
+                        <app-rich-text-editor [control]="descriptionControl"></app-rich-text-editor>
+                        <!-- <mat-form-field>
+                            <mat-label>Beschreibung</mat-label>
+                            <textarea matInput formControlName="description" cols="30" rows="10"></textarea>
+                            <mat-hint align="end">Mindestens 10 Zeichen</mat-hint>
+                        </mat-form-field> -->
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Anfangsdatum</mat-label>
+                            <input matInput type="datetime-local" formControlName="start_date" placeholder="start date">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Enddatum</mat-label>
+                            <input matInput type="datetime-local" formControlName="end_date" placeholder="end date">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Kursgebühr</mat-label>
+                            <input matInput type="number" formControlName="course_fees" placeholder="end date">
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Link zum Lesen</mat-label>
+                            <input type="url" matInput formControlName="link" placeholder="Ihr URL Kurs hier">
+                            <mat-hint align="end">Nur gültige URL akzeptieren</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Autor</mat-label>
+                            <input matInput formControlName="author" placeholder="Name des Autors hier">
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Kategory</mat-label>
+                            <select matNativeControl formControlName="category">
+                                <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
+                              </select>
+                        </mat-form-field>
+                    </div>
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            [disabled]="courseForm.invalid">
+                            Speichern
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

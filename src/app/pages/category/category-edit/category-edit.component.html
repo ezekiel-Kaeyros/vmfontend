@@ -1,0 +1,41 @@
+<div class="edit-category">
+    <div class="intro">
+        <h2 class="mat-display-2">Kategory in der folgenden Form bearbeiten</h2>
+    </div>
+    <div class="form">
+        <mat-card>
+            <mat-card-content *ngIf="category">
+                <mat-card-title class="mat-display-1">
+                    <span>Kategory bearbeiten</span>
+                </mat-card-title>
+                <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name" placeholder="Ihr Name hier">
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Description</mat-label>
+                            <textarea matInput formControlName="description" cols="30" rows="10"></textarea>
+                            <mat-hint align="end">Min 10 characters</mat-hint>
+                        </mat-form-field>
+                  </div>
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            [disabled]="categoryForm.invalid">
+                            Speichern
+                        </button>
+                        <button mat-flat-button routerLink="/category" color="accent">
+                            Cancel
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,126 @@
+.tool-audio {
+    width: 100%;
+    min-height: 150px;
+    border: 1px solid #8f8b8b;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+}
+
+.mat-display-1 {
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+}
+mat-hint {
+    color: #8f8b8b;
+}
+.file-type {
+    margin: 0rem 0 1.4rem 0;
+}
+button {
+    background: linear-gradient(60deg, #ff8f0c, #de1cbd);
+    color: whitesmoke;
+}
+.audio-content div {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-doc label {
+    cursor: pointer;
+    /* border: 1px solid #8f8b8b; */
+    padding: 0.4rem 1.1rem;
+    border-radius: 4px;
+    background: linear-gradient(60deg, #ff8f0c, #de1cbd);
+    font-weight: 300;
+ }
+ 
+ #upload-doc {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+
+ .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+
+ /* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe00;
+    margin: 8% auto; /* 15% from the top and centered */
+    /* padding: 20px; */
+    /* border: 1px solid #888; */
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+.main{
+    width: 100%;
+    height: 100vh;
+    /* background-color: #880bea; */
+    /* height: 100vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    position: absolute;
+}
+.container-c{
+    width: 500px;
+    padding: 50px;
+    position: relative;
+    /* background: #fff; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+}
+.progress-circular-c{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: conic-gradient(#ff8f0c 30deg, #ededed 0deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* display: none;
+    justify-content: center;
+    align-items: center;
+    animation: spin 2s linear infinite;
+    margin-top: 6px; */
+    animation: spin 2s linear infinite;
+}
+
+.value {
+    font-size: 60px;
+    font-weight: 600;
+    color: #ff8f0c ;
+    z-index: 9;
+    animation: spin2 2s linear infinite;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 63px; */
+  }
+  .progress-circular-c::after {
+    position: absolute;
+    content: "";
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    background: #fff;
+  }

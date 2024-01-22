@@ -1,0 +1,46 @@
+<!-- toolbar -->
+<mat-toolbar class="toolbar">
+  <span class="edie-brand" routerLink="/">
+      bildungswerk vielfalt
+  </span>
+  <span class="spacer"></span>
+  <div class="toolbar__nav">
+    <ul>
+        <li (click)="openAbout('about-us')">
+            <a mat-button>Infos</a>
+        </li>
+        <li class="login">
+            <a mat-button>Login</a>
+        </li>
+        <li>
+          <button mat-icon-button class="drop-menu" (click)="showMenu()">
+              <mat-icon>menu</mat-icon>
+          </button>
+        </li>
+        <li>
+          <button mat-button class="lg">
+            <a>En</a> | <a>De</a>
+          </button>
+        </li>
+    </ul>
+
+    <button mat-icon-button class="side-menu" (click)="navOpen()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-toolbar class="dropdown-menu" [class.move-down] = "dropdown" [class.move-up] = "!dropdown">
+  <ul>
+    <li><a mat-button routerLink="/program">Programm</a></li>
+    <li><a mat-button href="https://moodle.bildungswerk-vielfalt.com" target="_blank">Lernplattform</a></li>
+    <li><a mat-button routerLink="/education">Bildungsberatung</a></li>
+    <li><a mat-button routerLink="/projects">Projekte</a></li>
+    <li><a routerLink="/toolbox-pages">Toolbox</a></li>
+    <li>
+      <button mat-icon-button (click)="closeMenu()">
+        <mat-icon>highlight_off</mat-icon>
+      </button>
+    </li>
+  </ul>
+</mat-toolbar>

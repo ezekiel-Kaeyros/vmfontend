@@ -1,0 +1,63 @@
+<div id="myModal" class="modal" #modal>
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="main">
+      <div class="container-c">
+        <div class="progress-circular-c" #myDiv> 
+          <span class="value" #value>0%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="translation-container">
+  <h2 class="mat-display-2">Toolbox</h2>
+  <div class="translation">
+    <div class="translation__header">
+      <ul class="tool-nav">
+        <li class="text-item">
+            <a mat-stroked-button routerLink="text" routerLinkActive="['active']">
+              <mat-icon>translate</mat-icon> Text
+            </a>
+        </li>
+        <li>
+            <a mat-stroked-button routerLink="audio" routerLinkActive="['active']">
+              <mat-icon>mic</mat-icon> Audio
+            </a>
+        </li>
+        <li>
+            <a mat-stroked-button routerLink="image" routerLinkActive="['active']">
+              <mat-icon>image</mat-icon> Image
+            </a>
+        </li>
+        <li>
+            <a mat-stroked-button routerLink="document" routerLinkActive="['active']">
+              <mat-icon>description</mat-icon> Document
+            </a>
+        </li>
+        <li>
+            <a mat-stroked-button routerLink="scan" routerLinkActive="['active']">
+              <mat-icon>qr_code_2</mat-icon> Scan
+            </a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="translation__textarea">
+      <div class="languages">
+        <button mat-button>Detect language</button>
+        <button mat-button>English</button>
+        <button mat-button>Deutsch</button>
+        <button mat-button>French</button>
+        <button mat-button mat-icon-button>
+          <mat-icon>expand_more</mat-icon>
+        </button>
+      </div>
+      <router-outlet></router-outlet>
+  </div>
+  </div>
+</div>

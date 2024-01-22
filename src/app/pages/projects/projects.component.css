@@ -1,0 +1,143 @@
+.projects {
+    width: 80%;
+    margin: auto;
+    padding-top: 4rem;
+}
+@media (max-width: 992px) {
+    .projects {
+        width: 90%;
+    }
+}
+@media (max-width: 992px) {
+    .projects {
+        width: 100%;
+    }
+}
+.progress-spinner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.progress-spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #ff8f0c;
+}
+
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    text-align: center;
+}
+
+.content-page {
+    color: whitesmoke;
+    line-height: 1.8rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+}
+
+/* ************************************* */
+.example-card {
+    /* max-width: 400px; */
+    width: 400px;
+}
+@media (max-width: 1400px) {
+    .example-card {
+        /* max-width: 450px; */
+        width: 450px;
+    }
+}
+@media (max-width: 992px) {
+    .projects {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+.example-header-image {
+    background-size: cover;
+}
+
+mat-grid-list {
+    margin-bottom: 0.8rem;
+}
+
+mat-card-header {
+    height: 100px;
+}
+
+mat-card {
+    border: 6px solid #ff8f0c;
+    background: #36454f;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+mat-card-subtitle {
+    color: whitesmoke;
+}
+
+
+mat-card-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+mat-card-actions span {
+    font-weight: 500 !important;
+}
+
+mat-paginator {
+    background: #ff8f0c;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+
+/* mat-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+} */
+
+.admin-toolbar {
+    margin-bottom: 2rem;
+    padding: 0;
+    height: 3rem;
+    background: #ff8f0c;
+    border-radius: 4px;
+}
+
+.admin-toolbar ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+    width: 100%;
+}
+
+li a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 1.2rem;
+    color: whitesmoke;
+}
+
+mat-card img{
+    object-fit: cover; /*this makes the image in src fit to the size specified below*/
+    height: 180px;
+}
+
+mat-card-content p {
+    height: 100px;
+}
+.no-image {
+    height: 294px;
+}

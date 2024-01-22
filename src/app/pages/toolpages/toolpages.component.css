@@ -1,0 +1,74 @@
+.toolbox-pages-grid {
+    width: 80%;
+    margin: auto;
+    padding: 0.5rem;
+    min-height: 80vh;
+    padding-top: 4rem;
+}
+@media (max-width: 768px) {
+    .toolbox-pages-grid {
+        width: 90%;
+    }
+}
+@media (max-width: 576px) {
+    .toolbox-pages-grid {
+        width: 96%;
+    }
+}
+
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    text-align: center;
+}
+
+mat-card {
+    background: linear-gradient(#ff8f0c, #de1cbd);
+    width: 49%;
+    cursor: pointer;
+}
+@media (max-width: 768px) {
+    mat-card {
+        width: 100%;
+    }
+    mat-card:first-of-type {
+        margin-bottom: 1.2rem;
+    }
+}
+mat-card-title {
+    color: #444444;
+}
+
+/* mat-card-content {
+    position: relative;
+    min-height: 18rem;
+    overflow: hidden;
+}
+@media (max-width: 768px) {
+    mat-card-content {
+        height: 14rem;
+    }
+}
+@media (max-width: 576px) {
+    mat-card-content {
+        height: 10rem;
+    }
+}
+
+mat-card-content img {
+    width: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;;
+} */
+
+.tools {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .tools {
+        flex-direction: column;
+    }
+}

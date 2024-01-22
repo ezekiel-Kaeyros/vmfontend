@@ -1,0 +1,39 @@
+mat-nav-list {
+    width: 300px;
+    height: 100vh;
+    background: #FF8F0C;
+    color: #000;
+    font-family: 'Permanent Marker';
+}
+@media (max-width: 576px) {
+    mat-nav-list {
+        width: 200px;
+    }
+}
+
+mat-nav-list a {
+    color: #000;
+    font-family: 'Permanent Marker';
+}
+
+.edie-brand {
+    margin: 24px;
+    cursor: pointer;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    color: #000;
+    font-family: 'Permanent Marker';
+    font-size: 42px;
+}
+
+.rectangle {
+    width: 200px;
+    height: 60px;
+    background: #DD0B3B;
+}
+@media (max-width: 576px) {
+    .rectangle {
+        width: 120px;
+        height: 40px;
+    }
+}

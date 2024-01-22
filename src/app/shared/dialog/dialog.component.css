@@ -1,0 +1,30 @@
+.pop-dialog {
+    text-align: center;
+}
+
+.pop-dialog mat-dialog-title {
+    color: #444444!important;
+}
+
+.pop-content {
+    margin-bottom: 1rem;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.toolbox-btn {
+    height: 1.8rem !important;
+    font-weight: 300;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff8f0c;
+    color: white;
+    border-radius: 18px;
+    padding-left: 1rem;
+    padding-right: 0.4rem;
+}

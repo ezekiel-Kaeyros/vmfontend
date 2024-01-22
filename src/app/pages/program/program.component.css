@@ -1,0 +1,152 @@
+.program-content {
+    width: 80%;
+    margin: auto;
+    padding-top: 4rem;
+}
+.mat-display-2 {
+    color: #ff8f0c;
+    font-family: 'Permanent Marker';
+    text-align: center;
+}
+
+.content-page {
+    color: whitesmoke;
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+    font-weight: 300;
+}
+
+/* ************************************* */
+.example-card {
+    width: 500px;
+}
+@media (width: 1400px) {
+    .example-card {
+        max-width: 450px;
+    }
+}
+@media (width: 992px) {
+    .projects {
+        width: 90%;
+        margin: auto;
+    }
+}
+
+mat-grid-list {
+    margin-bottom: 0.8rem;
+}
+
+mat-card-header {
+    height: 125px;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.properties {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+mat-card-content {
+    min-height: 110px;
+}
+
+mat-card {
+    border: 6px solid #ff8f0c;
+    background: #36454f;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+mat-card-subtitle {
+    color: whitesmoke;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+}
+
+mat-card-actions button:first-of-type {
+    font-weight: 500;
+}
+mat-card-actions button:last-of-type {
+    font-weight: 300;
+}
+
+mat-paginator {
+    background: #ff8f0c;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+
+/* mat-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+} */
+
+.label {
+    font-size: 1.1rem;
+    font-weight: 200;
+    line-height: 2rem;
+    padding: 0 1rem;
+    color: whitesmoke;
+}
+
+.label p {
+    margin-bottom: 1.4rem;
+}
+
+.email {
+    text-decoration: underline #ff8f0c;
+    text-underline-offset: 0.4rem;
+    font-weight: 100;
+}
+
+a, .bildungswerk_vielfalt {
+    text-decoration: underline #ff8f0c;
+    text-underline-offset: 0.4rem;
+    color: whitesmoke;
+}
+
+
+/* Spinner */
+.progress-spinner {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+}
+.progress-spinner ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: #ff8f0c;
+}
+
+mat-toolbar.admin-nav {
+    height: 3rem !important;
+    background: #ff8f0c;
+    margin-bottom: 1rem;
+}
+.admin-nav ul {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+.admin-nav ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.admin-nav ul li a {
+    width: 100%;
+}
+.nav li {
+    text-align: center;
+}
+/* .nav li:not(:last-child) {
+    border-right: 1px solid whitesmoke !important;
+} */

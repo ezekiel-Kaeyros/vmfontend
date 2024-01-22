@@ -1,0 +1,77 @@
+.course-details {
+    width: 80%;
+    margin: auto;
+    margin-top: 4rem;
+}
+.mat-display-2 {
+    color: #ff8f0c;
+    text-align: center;
+    font-family: 'Permanent Marker';
+}
+.intro, .details {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.intro {
+    color: white;
+}
+
+.details {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+}
+
+mat-card-header {
+    display: block;
+}
+.properties {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+mat-card {
+    border: 6px solid #ff8f0c;
+    background: #36454f;
+    color: whitesmoke;
+    margin-top: 1rem;
+}
+
+mat-card-subtitle {
+    color: whitesmoke;
+}
+
+mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+mat-card-actions button:first-of-type {
+    font-weight: 500;
+}
+mat-card-actions button:last-of-type {
+    font-weight: 300;
+}
+
+mat-paginator {
+    background: #ff8f0c;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+
+mat-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.list {
+    text-decoration: underline #ff8f0c;
+    text-underline-offset: 0.4rem;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
+}

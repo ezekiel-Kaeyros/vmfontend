@@ -1,0 +1,28 @@
+<div class="tool-audio">
+    <div class="audio-content">
+        <div class="mat-display-1">Select a document</div>
+        <div class="file-type">
+            <mat-hint>Import a .docx, .pdf or .xlsx.</mat-hint>
+        </div>
+        <div class="btn-doc">
+            <label for="upload-doc">Browse document on your computer</label>
+            <input type="file" accept=".pdf,.docx,.pptx,.xlsx" class="file-input" (change)="onFileSelected($event)" id="upload-doc">
+        </div>
+    </div>
+</div>
+
+
+<div id="myModal" class="modal" #modal>
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="main">
+        <div class="container-c">
+          <div class="progress-circular-c" #myDiv> 
+            <span class="value" #value>0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+</div>

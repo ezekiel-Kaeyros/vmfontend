@@ -1,0 +1,14 @@
+<div class="pop-dialog">
+    <div mat-dialog-title style="color: #444">{{textContent.title}}</div>
+    <div mat-dialog-content class="pop-content">
+        {{ textContent.description }}
+    </div>
+    <div mat-dialog-actions class="actions">
+        <button mat-raised-button color="primary" (click)="dialogRef.close(true)">
+            Open tool
+        </button>
+        <button mat-raised-button color="accent" (click)="dialogRef.close(false)">
+            Cancel
+        </button>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="course-details">
+    <div class="intro">
+        <h2 class="mat-display-2">Details zum Projekt</h2>
+    </div>
+    <div class="details" *ngIf="project !== undefined">
+        <a routerLink="/projects" class="list">Zurück zur Projektliste</a>
+        <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image" style="background-image: url({{project.logoUrl}});"></div>
+              <mat-card-title>{{project.title}}</mat-card-title>
+              <mat-card-subtitle>{{project.duration}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image *ngIf="project.photoUrl" src="{{project.photoUrl}}" alt="{{project.title}}">
+            <mat-card-content>
+              <div [innerHTML]="project.description" class="my-5">
+              </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <div>
+                    <span class="mat-body">Gefördert von</span>
+                </div>
+                <button mat-button>
+                    <div mat-card-avatar class="example-header-image" style="background-image: url({{project.sponsorLogoUrl}})"></div>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+.project-list {
+    width: 80%;
+    margin: auto;
+    margin-top: 4rem;
+}
+.mat-display-2 {
+    color: #ff8f0c;
+    text-align: center;
+    font-family: 'Permanent Marker';
+}
+.mat-display-1 {
+    font-family: 'Permanent Marker';
+    color: #ff8f0c;
+}
+.intro, .list {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.intro {
+    color: white;
+}
+
+.list {
+    background: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.progress-spinner {
+    @include absoluteCenter;
+}
+
+.icons {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.icons div:last-child .mat-icon {
+    transform: scale(2);
+}
+
+table {
+    width: 100%;
+    background: transparent;
+
+}
+table tr td:not(:first-child) {
+    cursor: pointer;
+}
+
+table a {
+    text-decoration: none;
+    color: black;
+}
+
+mat-icon {
+    opacity: 0.5;
+}
+
+.create {
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+}
+
+.admin-toolbar {
+    margin-bottom: 2rem;
+    padding: 0;
+    height: 3rem;
+    background: #ff8f0c;
+    border-radius: 4px;
+}
+
+.admin-toolbar ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+    width: 100%;
+}
+
+li a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    font-size: 1.2rem;
+    color: whitesmoke;
+}
+

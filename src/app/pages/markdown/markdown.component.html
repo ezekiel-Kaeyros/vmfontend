@@ -1,0 +1,52 @@
+<div class="container">
+	<h3>Angular Jira Clone Part 06 & 07 - Build a markdown text editor / rich text editor with Angular</h3>
+	<br />
+	<a href="https://trungk18.com/experience/angular-jira-clone-tutorial-06-angular-markdown-text-editor/">
+		https://trungk18.com/experience/angular-jira-clone-tutorial-06-angular-markdown-text-editor/
+	</a>
+	<div class="mb-4"></div>
+
+	<h3>Markdown Editor</h3>
+	<h4>1. Standalone</h4>
+	<app-markdown-editor></app-markdown-editor>
+	<div class="mb-4"></div>
+
+	<h4>2. Inside a Form</h4>
+	<form [formGroup]="markdownForm">
+		<div class="form-group">
+			<label for="Title">Title</label>
+			<input formControlName="title" class="form-control" id="Title" aria-describedby="Title">
+		</div>
+			<div class="form-group">
+				<label>Description</label>
+				<app-markdown-editor [control]="descriptionRawControl"></app-markdown-editor>
+			</div>
+	</form>
+	<div class="alert alert-info">
+		{{ markdownForm.value | json }}
+	</div>
+
+	<hr />
+
+	<h3>Rich Text Editor</h3>
+	<h4>1. Standalone</h4>
+	<app-rich-text-editor></app-rich-text-editor>
+	<div class="mb-4"></div>
+
+	<h4>2. Inside a Form</h4>
+	<form [formGroup]="richTextForm">
+		<div class="form-group">
+			<label for="Title">Title</label>
+			<input formControlName="title" class="form-control" id="Title" aria-describedby="Title">
+		</div>
+			<div class="form-group">
+				<label>Description</label>
+				<app-rich-text-editor [control]="descriptionRichControl"></app-rich-text-editor>
+			</div>
+	</form>
+	<div class="alert alert-info">
+		{{ richTextForm.value | json }}
+	</div>
+
+	<div class="mb-4"></div>
+</div>

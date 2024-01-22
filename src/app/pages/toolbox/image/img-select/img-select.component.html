@@ -1,0 +1,17 @@
+<div class="tool-audio">
+    <div class="audio-content">
+        <div class="mat-display-1">Select picture</div>
+        <div class="file-type">
+            <mat-hint>Import a .jpg, .jpeg or .png</mat-hint>
+        </div>
+        <!-- <div>
+            <button mat-raised-button (click)="displayImageContent()">
+                Browse files on your computer
+            </button>
+        </div> -->
+        <div class="btn-img">
+            <label for="upload-image">Browse picture on your computer</label>
+            <input type="file" class="file-input" (change)="onFileSelected($event)" id="upload-image">
+        </div>
+    </div>
+</div>

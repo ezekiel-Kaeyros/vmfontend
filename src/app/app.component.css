@@ -1,0 +1,25 @@
+.main-container {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    background: #000;
+    min-height: 100vh;
+}
+@media (max-width: 992px) {
+    .main-container {
+      padding-top: 5rem;
+      padding-bottom: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+      padding-top: 4rem;
+      padding-bottom: 2rem;
+    }
+}
+@media (max-width: 576px) {
+    .main-container {
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+}
