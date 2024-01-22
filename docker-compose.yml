@@ -1,0 +1,7 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: vmdo_frontend
