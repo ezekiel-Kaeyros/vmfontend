@@ -1,55 +1,60 @@
-name: Deploy to Amazon ECS
-on:
-  workflow_run:
-    workflows: ["CI Pipeline"]
-    types:
-      - completed
-
-# secrets:
-#   DOCKERHUB_USERNAME: 
-#   DOCKERHUB_PASSWORD: 
-#   AWS_ACCESS_KEY_ID:
-#   AWS_SECRET_ACCESS_KEY:
-
-env:
-  IMAGE_NAME: vmdo_frontend
-  AWS_REGION: eu-central-1                         
-  ECS_SERVICE: vmdo-service2            
-  ECS_CLUSTER: test-cluster-vmdo             
-  ECS_TASK_DEFINITION: aws/td.json 
-  CONTAINER_IMAGE: ezekielkaeyros/vmdo_vmdo-frontend
-  CONTAINER_NAME: vmdo-deploy
-
-defaults:
-  run:
-    shell: bash
-jobs:
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: read
-    steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Configure AWS credentials
-          uses: aws-actions/configure-aws-credentials@v1
-          with:
-              aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-              aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-              aws-region: ${{ env.AWS_REGION }}
-        - name: Fill in the new image ID in the Amazon ECS task definition
-          id: task-def
-          uses: aws-actions/amazon-ecs-render-task-definition@v1
-          with:
-              task-definition: ${{ env.ECS_TASK_DEFINITION }}
-              container-name: ${{ env.CONTAINER_NAME }}
-              image: ${{ env.CONTAINER_IMAGE }}
-        - name: Deploy Amazon ECS task definition
-          uses: aws-actions/amazon-ecs-deploy-task-definition@v1
-          with:
-              task-definition: ${{ steps.task-def.outputs.task-definition }}
-              service: ${{ env.ECS_SERVICE }}
-              cluster: ${{ env.ECS_CLUSTER }}
-              wait-for-service-stability: true
+{
+    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:108165532263:task-definition/task-vmdo:5",
+    "containerDefinitions": [
+        {
+            "name": "vmdo-deploy",
+            "image": "ezekielkaeyros/vmdo_vmdo-frontend:latest",
+            "cpu": 512,
+            "memory": 1024,
+            "memoryReservation": 512,
+            "portMappings": [
+                {
+                    "name": "vmdo-deploy-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 3000,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": []
+        }
+    ],
+    "family": "task-vmdo",
+    "taskRoleArn": "arn:aws:iam::108165532263:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::108165532263:role/ecsTaskExecutionRole",
+    "revision": 5,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "1024",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2024-01-22T14:44:09.960Z",
+    "registeredBy": "arn:aws:iam::108165532263:user/Dombissi",
+    "tags": []
+}
