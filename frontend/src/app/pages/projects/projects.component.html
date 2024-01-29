@@ -10,30 +10,32 @@
 
         <div class="courses">
             <mat-grid-list [cols]="breakpoint" [gutterSize]="'15'" rowHeight="30rem" (window:resize)="onResize($event)">
-                <mat-grid-tile *ngFor="let project of pagedList">
-                    <mat-card class="example-card" routerLink="{{project.id}}">
-                        <mat-card-header>
-                          <div mat-card-avatar class="example-header-image" style="background-image: url({{project.logoUrl}});"></div>
-                          <mat-card-title>{{project.title}}</mat-card-title>
-                          <mat-card-subtitle>{{project.duration}}</mat-card-subtitle>
-                        </mat-card-header>
-                        <img mat-card-image *ngIf="project.photoUrl" src="{{project.photoUrl}}" alt="{{project.title}}">
-                        <mat-card-content [ngClass]="{'no-image': project.photoUrl === ''}">
-                          <p>
-                            {{project.description}}
-                          </p>
-                        </mat-card-content>
-                        <mat-card-actions>
-                            <div>
-                                <span class="mat-body">Gefördert von</span>
-                            </div>
-                            <button mat-button>
-                                <div mat-card-avatar class="example-header-image" style="background-image: url({{project.sponsorLogoUrl}})"></div>
-                            </button>
-                        </mat-card-actions>
-                    </mat-card>
-                </mat-grid-tile>
-            </mat-grid-list>
+                    <mat-grid-tile *ngFor="let project of listOfProjects">
+                        <mat-card class="example-card" routerLink="{{project.id}}">
+                            <mat-card-header>
+                              <div mat-card-avatar class="example-header-image" style="background-image: url({{project.project_icon_url}});"></div>
+                              <mat-card-title>{{project.title}}</mat-card-title>
+                              <mat-card-subtitle>{{'project.duration'}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <img mat-card-image *ngIf="project.project_image_url" src="{{project.project_image_url}}" alt="{{project.title}}">
+                            <mat-card-content [ngClass]="{'no-image': project.project_image_url === ''}">
+                              <p>
+                                {{project.content}}
+                              </p>
+                            </mat-card-content>
+                            <mat-card-actions>
+                                <div>
+                                    <span class="mat-body">Gefördert von</span>
+                                </div>
+                                <button mat-button>
+                                    <div mat-card-avatar class="example-header-image" style="background-image: url({{project.sponsor_images_urls}})"></div>
+                                </button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+                
             <mat-paginator
                 [length]="length"
                 [pageSize]="pageSize"

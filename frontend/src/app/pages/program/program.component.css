@@ -1,5 +1,5 @@
 .program-content {
-    width: 80%;
+    width: 90%;
     margin: auto;
     padding-top: 4rem;
 }
@@ -18,7 +18,7 @@
 
 /* ************************************* */
 .example-card {
-    width: 500px;
+    width: 600px;
 }
 @media (width: 1400px) {
     .example-card {
@@ -37,15 +37,13 @@ mat-grid-list {
 }
 
 mat-card-header {
-    height: 125px;
+    height: 325px;
     display: block;
     margin-bottom: 1rem;
 }
-
-.properties {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+.course-title {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 mat-card-content {
@@ -150,3 +148,29 @@ mat-toolbar.admin-nav {
 /* .nav li:not(:last-child) {
     border-right: 1px solid whitesmoke !important;
 } */
+
+
+/* .properties {
+    width: 70%;
+} */
+
+.properties div {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.properties .label {
+    color: whitesmoke;
+    margin-right: 1rem;
+    width: 20%;
+}
+.properties .value {
+    color: #91877d;
+    margin-left: 1.5rem;
+}
+
+.properties {
+    margin-bottom: 2.5rem;
+}
+

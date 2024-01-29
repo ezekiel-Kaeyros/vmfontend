@@ -9,6 +9,12 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { ImpressumComponent } from './impressum/impressum.component';
 import { DatenschutzComponent } from './datenschutz/datenschutz.component';
+import { LoginComponent } from './user/login/login.component';
+import { SignupComponent } from './user/signup/signup.component';
+import { UserListComponent } from './user/user-list/user-list.component';
+import { UserEditComponent } from './user/user-edit/user-edit.component';
+import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +27,12 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
     FourOhFourComponent,
     MapComponent,
     ImpressumComponent,
-    DatenschutzComponent
+    DatenschutzComponent,
+    LoginComponent,
+    SignupComponent,
+    UserListComponent,
+    UserEditComponent,
+    UserDetailsComponent
   ],
   entryComponents: [
     MapComponent
@@ -29,7 +40,9 @@ import { DatenschutzComponent } from './datenschutz/datenschutz.component';
   imports: [
     CommonModule,
     RouterModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     HeaderComponent,

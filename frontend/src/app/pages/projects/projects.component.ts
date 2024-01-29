@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator, LegacyPageEvent as PageEvent } from '@angular/material/legacy-paginator';
 import { Subscription } from 'rxjs';
 import { Project } from 'src/app/models/project.model';
 import { ProjectService } from 'src/app/services/project.service';
@@ -15,9 +15,13 @@ export class ProjectsComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   apiUrl = environment.apiUrl;
+  listOfProjects = this.projectService.projects;
 
   breakpoint: number;
   gutter: string;
+  longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
+  from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
+  originally bred for hunting.`;
 
   showSpinner: boolean = true;
 
@@ -43,31 +47,31 @@ export class ProjectsComponent {
     } else {
       this.breakpoint = 3;
     }
-
+  
     this.projectService.getAllProjects();
 
     this.projectSubscription$ = this.projectService.projectSubject$.subscribe((response: Project[]) => {
         this.projects = [...response.map(x => JSON.parse(JSON.stringify(x)))];
         this.projects = this.projects.map(project => {
-          let subDes = project.description.replace(/<(.+?)>/g, '');
+          let subDes = project.content.replace(/<(.+?)>/g, '');
           if (subDes.length > 250) {
             subDes = subDes.substring(0, 250);
             subDes = subDes.substring(0, subDes.lastIndexOf(' '));
             subDes += '...';
           }
-          project.description = subDes;
-          project.photoUrl = project.photoUrl ? `${this.apiUrl}/media/${project.photoUrl}` : '';
-          project.logoUrl = project.logoUrl ? `${this.apiUrl}/media/${project.logoUrl}` : '';
-          project.sponsorLogoUrl = project.sponsorLogoUrl ? `${this.apiUrl}/media/${project.sponsorLogoUrl}` : '';
+          project.content = subDes;
+          project.project_image_url = project.project_image_url ? `${this.apiUrl}/media/${project.project_image_url}` : '';
+          project.project_icon_url = project.project_icon_url ? `${this.apiUrl}/media/${project.project_icon_url}` : '';
+          //project.sponsor_images_urls = project.sponsor_images_urls ? `${this.apiUrl}/media/${project.sponsor_images_urls}` : '';
           return project;
         });
         this.pagedList = this.projects.slice(0, 6);
         this.length = this.projects.length;
         this.showSpinner = false;
       }
-    );
+    ); 
   }
-
+  
   OnPageChange(event: PageEvent) {
     let startIndex = event.pageIndex * event.pageSize;
     let endIndex = startIndex + event.pageSize;
@@ -92,11 +96,11 @@ export class ProjectsComponent {
   }
 
   learnMore(project: Project) {
-    window.location.href = project.link ?? '';
+    //window.location.href = project. ?? '';
   }
 
   ngOnDestroy(): void {
     this.projectSubscription$.unsubscribe();
   }
-
+  
 }

@@ -1,22 +1,7 @@
 .create-course {
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-top: 4rem;
-}
-@media (max-width: 992px) {
-    .create-course {
-        width: 90%;
-    }
-}
-@media (max-width: 768px) {
-    .create-course {
-        width: 100%;
-    }
-}
-@media (max-width: 576px) {
-    .create-course {
-        width: 98%;
-    }
 }
 
 .mat-display-2 {
@@ -40,66 +25,77 @@
 .form {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 .mat-caption {
     color: red;
 }
 
+.mat-display-1 span {
+    font-size: 3rem;
+}
+
 mat-form-field {
     width: 100%;
+    margin-bottom: 1rem;
 }
-
-.list {
-    width: 100%;
-    text-align: right;
-    cursor: pointer;
+.content {
+    min-height: 500px;
 }
-
-/* To remove */
-.preview {
-    max-width: 200px;
+input {
+    color: whitesmoke;
 }
-
+/*
 mat-card {
     border: 6px solid #ff8f0c;
     background: #36454f;
     color: whitesmoke;
+} */
+mat-card {
+    background: #131212;
+    width: 49% !important;
 }
 
-::ng-deep .mat-focused .mat-form-field-label {
+mat-card-title {
+    text-align: center;
+}
+mat-label, label {
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: 200;
+    padding-bottom: 0.5rem;
+}
+
+.mat-focused .mat-form-field-label {
     /*change color of label*/
     color: whitesmoke !important;
    }
   
-   ::ng-deep.mat-form-field-underline {
+.mat-form-field-underline {
     /*change color of underline*/
-    background-color: #ff8f0c !important;
-  } 
+    /* background-color: #979DA4 !important; */
+    border-bottom: 2px solid #979DA4 !important;
+  }
   
-  ::ng-deep.mat-form-field-ripple {
+.mat-form-field-ripple {
    /*change color of underline when focused*/
-   background-color: #ff8f0c !important;
+   border-bottom: 2px solid #979DA4 !important;
+   color: whitesmoke;
   }
 
-  mat-label {
-    color: whitesmoke !important;
-    font-weight: 300;
+.select mat-label {
+    font-size: 1.5rem !important;
+}
+
+mat-label {
+    color: #979DA4 !important;
+    font-weight: 300 !important;
 }
 mat-hint {
       color: #ff8f0c !important;
       font-weight: 300;
-}
-
-.upload {
-    border-bottom: 1px solid #ff8f0c;
-    margin-bottom: 1.7rem;
-}
-.upload button {
-    width: 100%;
-    border: none;
-    padding: 0;
-    font-weight: 300;
-    text-align: left;
 }
 
 mat-card-actions{
@@ -119,4 +115,53 @@ mat-card-actions button {
 
 mat-card-actions button:disabled {
     background: #91877d !important;
+}
+
+.list {
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+}
+
+mat-form-field select {
+    background: #36454f;
+}
+
+.preview h1 {
+    color: #91877d !important;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+mat-card.preview {
+    color: whitesmoke !important;
+}
+.preview mat-card-title {
+    text-align: left !important;
+    color: whitesmoke;
+    margin-bottom: 2.5rem;
+}
+
+.properties div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.properties .label {
+    color: whitesmoke;
+    margin-right: 1rem;
+    width: 20%;
+}
+.properties .value {
+    color: #91877d;
+}
+
+.properties {
+    margin-bottom: 2.5rem;
+}
+
+.upload-image {
+    background: #ff8f0c;
+    color: whitesmoke;
+    font-family: 'Permanent Marker';
 }

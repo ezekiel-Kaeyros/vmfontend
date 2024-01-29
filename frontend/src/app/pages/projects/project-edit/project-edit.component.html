@@ -8,11 +8,6 @@
             <div mat-icon-button mat-card-avatar class="list" routerLink="/projects/list">
                 <mat-icon>list</mat-icon>
             </div>
-            <!-- <mat-card-header>
-                <button mat-icon-button mat-card-avatar>
-                    <mat-icon>save_as</mat-icon>
-                </button>
-            </mat-card-header> -->
             <mat-card-content *ngIf="project">
                 <mat-card-title class="mat-display-1">
                     <span>Projekt anlegen</span>
@@ -20,54 +15,80 @@
                 <form [formGroup]="projectForm" (ngSubmit)="submitForm()">
                     <div>
                         <mat-form-field>
-                            <mat-label>Projekttitel</mat-label>
+                            <mat-label>Project Title</mat-label>
                             <input matInput formControlName="title" placeholder="Ihr Titel hier">
-                            <mat-hint align="end">Min. 4 Zeichen</mat-hint>
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Category</mat-label>
+                            <input matInput type="text" formControlName="category_id" placeholder="project category">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="mb-5">
+                        <ngx-dropzone (change)="onSelectImage($event)">
+                            <ngx-dropzone-label>Drag and Drop logo project</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of imageFiles" [removable]="true" (removed)="onRemoveImage(f)">
+                              <ngx-dropzone-label>
+                                {{ f.name }} {{ f.type }}
+                              </ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                        <button mat-button class="upload-image mt-1" (click)="uploadProjectLogoFile()">Upload</button>
+                    </div>
+
+                    <div class="mb-5">
+                        <ngx-dropzone (change)="onSelectImage($event)">
+                            <ngx-dropzone-label>Drag and Drop project image</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of imageFiles" [removable]="true" (removed)="onRemoveImage(f)">
+                              <ngx-dropzone-label>
+                                {{ f.name }} {{ f.type }}
+                              </ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                        <button mat-button class="upload-image mt-1" (click)="uploadProjectImageFile()">Upload</button>
+                    </div>
+                      
+                    <div class="mb-5">
+                        <ngx-dropzone (change)="onSelectImage($event)">
+                            <ngx-dropzone-label>Drag and Drop sponsor images</ngx-dropzone-label>
+                            <ngx-dropzone-preview *ngFor="let f of imageFiles" [removable]="true" (removed)="onRemoveImage(f)">
+                              <ngx-dropzone-label>
+                                {{ f.name }} {{ f.type }}
+                              </ngx-dropzone-label>
+                            </ngx-dropzone-preview>
+                        </ngx-dropzone>
+                        <button mat-button class="upload-image mt-1" (click)="uploadSponsorImageFiles()">Upload</button>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Director</mat-label>
+                            <input type="text" matInput formControlName="director" placeholder="director">
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
                         </mat-form-field>
                     </div>
                     <div>
                         <mat-form-field>
-                            <mat-label>Laufzeit</mat-label>
-                            <input matInput formControlName="duration" placeholder="Ihre Dauer hier">
-                            <mat-hint align="end">Min. 4 Zeichen</mat-hint>
+                            <mat-label>Code</mat-label>
+                            <input type="text" matInput formControlName="code" placeholder="Code">
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
                         </mat-form-field>
                     </div>
-                    <div class="form-group bg-dark mb-3">
-                        <label>Infotext</label>
-                        <app-rich-text-editor [control]="descriptionControl"></app-rich-text-editor>
-                        <!-- <mat-form-field>
-                            <mat-label>Infotext</mat-label>
-                            <textarea matInput formControlName="description" cols="30" rows="10"></textarea>
-                            <mat-hint align="end">Min 10 characters</mat-hint>
-                        </mat-form-field> -->
+                    <div class="form-group bg-dark mb-3 content">
+                        <label>Beschreibung</label>
+                        <app-rich-text-editor [control]="contentControl"></app-rich-text-editor>
                     </div>
-                    <div class="upload">
-                        <input #projektlogo hidden type="file" onclick="this.value=null" accept="image/*" (change)="selectLogoProject($event)" />
-                        <button type="button" mat-stroked-button (click)="projektlogo.click()">Projektlogo</button>
-                        <img [src]="logoProject" class="preview" />
-                        <button type="button" mat-stroked-button (click)="resetLogoProject()" *ngIf="logoProject">Zurücksetzen</button>
-                    </div>
-                    <div class="upload">
-                        <input #kooperationspartner hidden type="file" onclick="this.value=null" accept="image/*" (change)="selectLogoPatner($event)" />
-                        <button type="button" mat-stroked-button (click)="kooperationspartner.click()">Logos Kooperationspartner</button>
-                        <img [src]="logoPatner" class="preview" />
-                        <button type="button" mat-stroked-button (click)="resetLogoPatner()" *ngIf="logoPatner">Zurücksetzen</button>
-                    </div>
-                    <div class="upload">
-                        <input #forderer hidden type="file" onclick="this.value=null" accept="image/*" (change)="selectLogoSponsor($event)" />
-                        <button type="button" mat-stroked-button (click)="forderer.click()">Logos Förderer</button>
-                        <img [src]="logoSponsor" class="preview" />
-                        <button type="button" mat-stroked-button (click)="resetLogoSponsor()" *ngIf="logoSponsor">Zurücksetzen</button>
-                    </div>
+                    
     
                     <mat-card-actions>
                         <button
-                            mat-flat-button
+                            mat-raised-button
+                            color="primary"
                             [disabled]="projectForm.invalid">
                             Speichern
-                        </button>
-                        <button mat-flat-button routerLink="/projects/list" color="accent">
-                            Cancel
                         </button>
                     </mat-card-actions>
                 </form>

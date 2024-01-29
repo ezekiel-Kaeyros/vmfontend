@@ -45,6 +45,15 @@ import { CategoryCreateComponent } from './category/category-create/category-cre
 import { CategoryDetailsComponent } from './category/category-details/category-details.component';
 import { CategoryEditComponent } from './category/category-edit/category-edit.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
+import { CourseCategoryEditComponent } from './course-category/course-category-edit/course-category-edit.component';
+import { CourseCategoryListComponent } from './course-category/course-category-list/course-category-list.component';
+import { ProjectCategoryCreateComponent } from './project-category/project-category-create/project-category-create.component';
+import { ProjectCategoryEditComponent } from './project-category/project-category-edit/project-category-edit.component';
+import { ProjectCategoryListComponent } from './project-category/project-category-list/project-category-list.component';
+import { InscriptionComponent } from './inscription/inscription.component';
+import { CourseCategoryCreateComponent } from './course-category/course-category-create/course-category-create.component';
+import { CourseCategoryDetailsComponent } from './course-category/course-category-details/course-category-details.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -81,7 +90,15 @@ import { CategoryListComponent } from './category/category-list/category-list.co
     CategoryCreateComponent,
     CategoryDetailsComponent,
     CategoryEditComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    CourseCategoryCreateComponent,
+    CourseCategoryEditComponent,
+    CourseCategoryListComponent,
+    ProjectCategoryCreateComponent,
+    ProjectCategoryEditComponent,
+    ProjectCategoryListComponent,
+    InscriptionComponent,
+    CourseCategoryDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -95,7 +112,8 @@ import { CategoryListComponent } from './category/category-list/category-list.co
     PdfViewerModule,
     MarkdownEditorModule,
     RichTextEditorModule,
-    QuillModule.forRoot()
+    QuillModule.forRoot(),
+    NgxDropzoneModule
   ]
 })
 export class PagesModule { }

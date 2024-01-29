@@ -7,6 +7,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UploadService } from 'src/app/services/upload.service';
 // End to remove
 
 @Component({
@@ -32,6 +33,8 @@ export class ProjectEditComponent {
   imageInfos?: Observable<any>;
   // End to remove
 
+  imageFiles: File[] = [];
+
   projectForm: FormGroup;
   project: Project;
   apiUrl = environment.apiUrl;
@@ -39,19 +42,15 @@ export class ProjectEditComponent {
   constructor(private fb: FormBuilder,
               private projectService: ProjectService,
               private router: Router,
+              private uploadService: UploadService,
               private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id'];
+    const id = +this.route.snapshot.params['id'];
     this.projectService.getProject(id).subscribe(
       (response: Project) => {
-        response.photoUrl = `${this.apiUrl}/media/${response.photoUrl}`;
-        response.logoUrl = `${this.apiUrl}/media/${response.logoUrl}`;
-        response.sponsorLogoUrl = `${this.apiUrl}/media/${response.sponsorLogoUrl}`;
         this.project = response;
-        this.logoProject = response.photoUrl;
-        this.logoPatner = response.logoUrl;
-        this.logoSponsor = response.sponsorLogoUrl;
+        console.log(response);
         this.initForm(this.project);
       }
     );
@@ -60,31 +59,28 @@ export class ProjectEditComponent {
   initForm(project: Project) {
     this.projectForm = this.fb.group({
       title: [project.title, Validators.required],
-      duration: [project.duration, Validators.required],
-      description: [project.description, Validators.required],
-      photoUrl: [project.photoUrl],
-      logoUrl: [project.logoUrl],
-      sponsorLogoUrl: [project.sponsorLogoUrl]
+      content: [project, Validators.required],
+      category_id: [project.category_id],
+      project_icon_url: [project.project_icon_url],
+      project_image_url: [project.project_image_url],
+      sponsor_images_urls: [project.sponsor_images_urls],
+      director: [project.lead],
+      code: [project.code],
     });
   }
 
   submitForm() {
     const formValue = this.projectForm.value;
-    this.project.editedAt = new Date();
 
-    this.projectService.emitProjectSubject();
-
-    const projectData = new FormData();
-    projectData.append('title', formValue['title']);
-    projectData.append('duration', formValue['duration']);
-    projectData.append('description', formValue['description']);
-    projectData.append('link', '__link');
-    projectData.append('author', '__author');
-    projectData.append('photoUrl', formValue['photoUrl']);
-    projectData.append('logoUrl', formValue['logoUrl']);
-    projectData.append('sponsorLogoUrl', formValue['sponsorLogoUrl']);
-    console.log(formValue['sponsorLogoUrl']);
-    this.projectService.editProject(this.project.id ?? 0, projectData as any).subscribe(
+    this.project.title = formValue['title'];
+    this.project.content = formValue['content'];
+    this.project.category_id = formValue['category_id'];
+    this.project.project_icon_url = formValue['project_icon_url'];
+    this.project.project_image_url = formValue['project_image_url'];
+    this.project.sponsor_images_urls = formValue['sponsor_images_urls'];
+    this.project.lead = formValue['director'];
+    this.project.code = formValue['code'];
+    this.projectService.editProject(this.project.id ?? 0, this.project).subscribe(
       (response) => {
         this.router.navigate([`/projects/${response.id}`]);
       },
@@ -94,10 +90,75 @@ export class ProjectEditComponent {
     );
   }
 
-  get descriptionControl() {
-    return this.projectForm.controls['description'] as FormControl;
+  get contentControl() {
+    return this.projectForm.controls['content'] as FormControl;
   }
 
+  onSelectImage(event: any) {
+    this.imageFiles.push(...event.addedFiles);
+  }
+
+  onRemoveImage(event: any) {
+    this.imageFiles.splice(this.imageFiles.indexOf(event), 1);
+  }
+
+  uploadProjectLogoFile() {
+    if (!this.imageFiles[0]) {
+      alert("No files selected");
+    } else {
+      const data = new FormData();
+      data.append('file', this.imageFiles[0]);
+      data.append('upload_preset', 'vmdo-project');
+      data.append('cloud_name', 'kaeyros-cloudinary');
+      this.uploadService.uploadImage(data).subscribe(
+        (response) => {
+          console.log(response);
+          this.projectForm.get('project_icon_url')?.patchValue(response.secure_url);
+          this.projectForm.get('project_icon_url')?.updateValueAndValidity();
+        }
+      );
+    }
+  }
+
+  uploadProjectImageFile() {
+    if (!this.imageFiles[0]) {
+      alert("No files selected");
+    } else {
+      const data = new FormData();
+      data.append('file', this.imageFiles[0]);
+      data.append('upload_preset', 'vmdo-project');
+      data.append('cloud_name', 'kaeyros-cloudinary');
+      this.uploadService.uploadImage(data).subscribe(
+        (response) => {
+          console.log(response);
+          this.projectForm.get('project_image_url')?.patchValue(response.secure_url);
+          this.projectForm.get('project_image_url')?.updateValueAndValidity();
+        }
+      );
+    }
+  }
+
+  uploadSponsorImageFiles() {
+    if (!this.imageFiles[0]) {
+      alert("No files selected");
+    } else {
+      for (let file of this.imageFiles) {
+        const data = new FormData();
+        data.append('file', file);
+        data.append('upload_preset', 'vmdo-project');
+        data.append('cloud_name', 'kaeyros-cloudinary');
+        this.uploadService.uploadImage(data).subscribe(
+          (response) => {
+            console.log(response);
+          }
+        );
+      }
+    }
+
+  }
+
+
+  /*
   resetLogoProject() {
     this.logoProject = '';
     this.projektlogo.nativeElement.value = null;
@@ -185,6 +246,6 @@ export class ProjectEditComponent {
         reader.readAsDataURL(this.currentFile);
       }
     }
-  }
+  } */
 
 }

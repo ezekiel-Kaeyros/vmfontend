@@ -1,6 +1,6 @@
 export interface Role {
     id?: number;
     name: string;
-    createdAt?: Date;
-    editedAt?: Date;
+    created_at?: Date;
+    edited_at?: Date;
 }

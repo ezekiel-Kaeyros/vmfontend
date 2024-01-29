@@ -1,0 +1,58 @@
+<div class="create-course">
+    <div class="intro">
+        <!-- <h2 class="mat-display-2">Projekt über das folgende Formular anmelden</h2> -->
+    </div>
+    <div class="form">
+        <mat-card>
+            <div mat-icon-button mat-card-avatar class="list" routerLink="/projects/list">
+                <mat-icon>list</mat-icon>
+            </div>
+            <mat-card-content>
+                <mat-card-title class="mat-display-1 mb-5">
+                    <span>Insription</span>
+                </mat-card-title>
+                <form [formGroup]="inscriptionForm" (ngSubmit)="submitForm()">
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput formControlName="email" placeholder="Email">
+                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Fist Name</mat-label>
+                            <input matInput type="text" formControlName="first_name" placeholder="First Name">
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Last Name</mat-label>
+                            <input matInput type="text" formControlName="last_name" placeholder="Last Name">
+                        </mat-form-field>
+                    </div>
+
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Message</mat-label>
+                            <input matInput type="textarea" formControlName="content" placeholder="Message">
+                            <textarea matInput formControlName="message" cols="30" rows="10"></textarea>
+                        </mat-form-field>
+                    </div>
+                    
+    
+                    <mat-card-actions>
+                        <button
+                            mat-raised-button
+                            color="primary"
+                            [disabled]="inscriptionForm.invalid">
+                            Send
+                        </button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

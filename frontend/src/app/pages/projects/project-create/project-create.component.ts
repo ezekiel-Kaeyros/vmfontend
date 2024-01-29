@@ -4,7 +4,9 @@ import { Router } from '@angular/router';
 import { ProjectService } from 'src/app/services/project.service';
 // To remove
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
+import { Project } from 'src/app/models/project.model';
+import { UploadService } from 'src/app/services/upload.service';
 // End to remove
 
 @Component({
@@ -13,58 +15,57 @@ import { Observable } from 'rxjs';
   styleUrls: ['./project-create.component.css']
 })
 export class ProjectCreateComponent {
-  @ViewChild('projektlogo') projektlogo: ElementRef;
-  @ViewChild('kooperationspartner') kooperationspartner: ElementRef;
-  @ViewChild('forderer') forderer: ElementRef;
 
-
-  // To remove
-  selectedFiles?: FileList;
-  currentFile?: File;
-  progress = 0;
-  message = '';
-  // preview = '';
-  logoProject = '';
-  logoPatner = '';
-  logoSponsor = '';
-
-  imageInfos?: Observable<any>;
-  // End to remove
+  logoFile: File[] = [];
+  imageProject: File[] = [];
+  sponsorImages: File[] = [];
 
   projectForm: FormGroup;
+  projectPreview$: Observable<Project>;
 
   constructor(private fb: FormBuilder,
               private projectService: ProjectService,
+              private uploadService: UploadService,
               private router: Router) {}
 
   ngOnInit(): void {
-      this.initForm();
+    this.initForm();
+
+    this.projectPreview$ = this.projectForm.valueChanges.pipe(
+      map(formValue => ({
+        ...formValue
+      }))
+    );
   }
 
   initForm() {
     this.projectForm = this.fb.group({
       title: ['', Validators.required],
-      duration: ['', Validators.required],
-      description: ['', Validators.required],
-      photoUrl: [null],
-      logoUrl: [null],
-      sponsorLogoUrl: [null]
+      content: ['', Validators.required],
+      category_id: [null],
+      project_icon_url: [null],
+      project_image_url: [null],
+      sponsor_images_urls: [null],
+      director: [null],
+      code: [null]
     });
   }
 
   submitForm() {
     const formValue = this.projectForm.value;
 
-    const projectData = new FormData();
-    projectData.append('title', formValue['title']);
-    projectData.append('duration', formValue['duration']);
-    projectData.append('description', formValue['description']);
-    projectData.append('link', '__link');
-    projectData.append('author', '__author');
-    projectData.append('photoUrl', formValue['photoUrl']);
-    projectData.append('logoUrl', formValue['logoUrl']);
-    projectData.append('sponsorLogoUrl', formValue['sponsorLogoUrl']);
-    this.projectService.createProject(projectData as any).subscribe(
+    const project: Project = {
+      title: formValue['title'],
+      content: formValue['content'],
+      category_id: formValue['category_id'],
+      project_icon_url: formValue['project_icon_url'],
+      project_image_url: formValue['project_image_url'],
+      sponsor_images_urls: formValue['sponsor_images_urls'],
+      lead: formValue['director'],
+      code: formValue['code']
+    };
+    console.log(project);
+    this.projectService.createProject(project).subscribe(
       (response) => {
         this.projectService.getAllProjects();
         this.projectService.emitProjectSubject();
@@ -76,114 +77,87 @@ export class ProjectCreateComponent {
     );
   }
 
-  get descriptionControl() {
-    return this.projectForm.controls['description'] as FormControl;
+  get contentControl() {
+    return this.projectForm.controls['content'] as FormControl;
+  }
+  
+  // UPLOAD LOGO PROJECT
+  onSelectLogo(event: any) {
+    this.logoFile.push(...event.addedFiles);
   }
 
-  resetLogoProject() {
-    this.logoProject = '';
-    this.projektlogo.nativeElement.value = null;
-    this.projectForm.get('photoUrl')?.reset();}
-
-  resetLogoPatner() {
-    this.logoPatner = '';
-    this.kooperationspartner.nativeElement.value = null;
-    this.projectForm.get('logoUrl')?.reset();
+  onRemoveLogo(event: any) {
+    this.logoFile.splice(this.logoFile.indexOf(event), 1);
   }
 
-  resetLogoSponsor() {
-    this.logoSponsor = '';
-    this.forderer.nativeElement.value = null;
-    this.projectForm.get('sponsorLogoUrl')?.reset();
-  }
-
-  selectFile(event: any): void {
-    let preview = '';
-    this.message = '';
-    this.progress = 0;
-    this.selectedFiles = event.target.files;
-
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-
-      if (file) {
-        preview = '';
-        this.currentFile = file;
-
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          preview = e.target.result;
-        };
-
-        reader.readAsDataURL(this.currentFile);
-      }
+  uploadProjectLogoFile() {
+    if (!this.logoFile[0]) {
+      alert("No files selected");
+    } else {
+      const data = new FormData();
+      data.append('file', this.logoFile[0]);
+      data.append('upload_preset', 'vmdo-project');
+      data.append('cloud_name', 'kaeyros-cloudinary');
+      this.uploadService.uploadImage(data).subscribe(
+        (response) => {
+          console.log(response);
+          this.projectForm.get('project_icon_url')?.patchValue(response.secure_url);
+          this.projectForm.get('project_icon_url')?.updateValueAndValidity();
+        }
+      );
     }
   }
 
-  selectLogoProject(event: any) {
-    this.selectedFiles = event.target.files;
-    this.logoProject = '';
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
+  // UPLOAD IMAGE PROJECT
+  onSelectImageProject(event: any) {
+    this.imageProject.push(...event.addedFiles);
+  }
 
-      if (file) {
-        this.logoProject = '';
-        this.currentFile = file;
-        this.projectForm.get('photoUrl')?.patchValue(file);
-        this.projectForm.get('photoUrl')?.updateValueAndValidity();
+  onRemoveImageProject(event: any) {
+    this.imageProject.splice(this.imageProject.indexOf(event), 1);
+  }
 
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          this.logoProject = e.target.result;
-        };
-
-        reader.readAsDataURL(this.currentFile);
-      }
+  uploadProjectImageFile() {
+    if (!this.imageProject[0]) {
+      alert("No files selected");
+    } else {
+      const data = new FormData();
+      data.append('file', this.imageProject[0]);
+      data.append('upload_preset', 'vmdo-project');
+      data.append('cloud_name', 'kaeyros-cloudinary');
+      this.uploadService.uploadImage(data).subscribe(
+        (response) => {
+          console.log(response);
+          this.projectForm.get('project_image_url')?.patchValue(response.secure_url);
+          this.projectForm.get('project_image_url')?.updateValueAndValidity();
+        }
+      );
     }
   }
-  selectLogoPatner(event: any) {
-    this.selectedFiles = event.target.files;
-    this.logoPatner = '';
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
 
-      if (file) {
-        this.logoPatner = '';
-        this.currentFile = file;
-        this.projectForm.get('logoUrl')?.patchValue(file);
-        this.projectForm.get('logoUrl')?.updateValueAndValidity();
-
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          this.logoPatner = e.target.result;
-        };
-
-        reader.readAsDataURL(this.currentFile);
-      }
-    }
+  // UPLOAD SPONSOR IMAGE PROJECT
+  onSelectSponsorImage(event: any) {
+    this.sponsorImages.push(...event.addedFiles);
   }
-  selectLogoSponsor(event: any) {
-    this.selectedFiles = event.target.files;
-    this.logoSponsor = '';
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
 
-      if (file) {
-        this.logoSponsor = '';
-        this.currentFile = file;
-        this.projectForm.get('sponsorLogoUrl')?.patchValue(file);
-        this.projectForm.get('sponsorLogoUrl')?.updateValueAndValidity();
+  onRemoveSponsorImage(event: any) {
+    this.sponsorImages.splice(this.sponsorImages.indexOf(event), 1);
+  }
 
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          this.logoSponsor = e.target.result;
-        };
-
-        reader.readAsDataURL(this.currentFile);
+  uploadSponsorImageFiles() {
+    if (!this.sponsorImages[0]) {
+      alert("No files selected");
+    } else {
+      for (let file of this.sponsorImages) {
+        const data = new FormData();
+        data.append('file', file);
+        data.append('upload_preset', 'vmdo-project');
+        data.append('cloud_name', 'kaeyros-cloudinary');
+        this.uploadService.uploadImage(data).subscribe(
+          (response) => {
+            console.log(response);
+          }
+        );
       }
     }
   }

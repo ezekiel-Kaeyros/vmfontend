@@ -4,36 +4,54 @@
     </div>
     <div class="details" *ngIf="course !== undefined">
       <a routerLink="/program" class="list">Zurück zur Kursliste</a>
-        <mat-card class="example-card">
-            <mat-card-header>
-              <div>
-                <mat-card-title>{{course.title}}</mat-card-title>
-              </div>
-              <!-- <mat-card-subtitle>{{course.createdAt | date}}</mat-card-subtitle> -->
-              <div class="properties">
-                <div>
-                  <mat-card-subtitle>Anfangsdatum: {{course.start_date | date: 'medium' }}</mat-card-subtitle>
-                  <mat-card-subtitle>Enddatum: {{course.end_date | date: 'medium' }}</mat-card-subtitle>
+      <mat-card class="preview">
+        <mat-card-header>
+            <mat-card-title>{{course.title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="properties">
+                <div *ngIf="course.start_date">
+                    <p class="label">Wann:</p>
+                    <p class="value">
+                        {{course.end_date | date }} - {{course.end_date | date }}
+                    </p>
                 </div>
-                <div>
-                  <mat-card-subtitle>Kursgebühr: {{ course.course_fees | currency: 'EUR' }}</mat-card-subtitle>
+                <div *ngIf="course.days">
+                    <p class="label">Tage und Uhrzeit:</p>
+                    <p class="value">
+                        {{course.days }}
+                    </p>
                 </div>
-              </div>
-            </mat-card-header>
-            <mat-card-content>
-              <!-- <p>
-                {{course.description}}
-              </p> -->
-              <div [innerHTML]="course.description">
-              </div>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button *ngIf="course.author">{{course.author}}</button>
-              <button mat-button *ngIf="course.link">
-                <mat-icon>link</mat-icon>
-                <a href={{course.link}} target="_blank"> Mehr lesen </a>
-            </button>
-            </mat-card-actions>
-        </mat-card>
+                <div *ngIf="course.location">
+                    <p class="label">Wo:</p>
+                    <p class="value">{{ course.location }}</p>
+                </div>
+                <div *ngIf="course.course_fees">
+                    <p class="label">Kursgebühr:</p>
+                    <p class="value">{{ course.course_fees | currency: 'EUR' }}</p>
+                </div>
+                <div *ngIf="course.duration">
+                    <p class="label">U-Std.:</p>
+                    <p class="value">{{ course.duration}}</p>
+                </div>
+                <div *ngIf="course.lead">
+                    <p class="label">Leitung:</p>
+                    <p class="value">{{ course.lead }}</p>
+                </div>
+                <div *ngIf="course.code">
+                    <p class="label">Kurs-Nr.:</p>
+                    <p class="value">{{ course.code }}</p>
+                </div>
+            </div>
+          <div [innerHTML]="course.content" class="preview-content">
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button (click)="inscription(course.id || 0)">Anmelden</button>
+            <span class="spacer"></span>
+            <button mat-button (click)="editCourse()" *ngIf="isAdmin()">edit</button>
+            <button mat-button (click)="deleteCourse(course)" *ngIf="isAdmin()">Delete</button>
+        </mat-card-actions>
+      </mat-card>
     </div>
 </div>

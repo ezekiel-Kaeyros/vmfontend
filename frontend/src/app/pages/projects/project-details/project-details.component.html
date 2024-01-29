@@ -4,24 +4,44 @@
     </div>
     <div class="details" *ngIf="project !== undefined">
         <a routerLink="/projects" class="list">Zurück zur Projektliste</a>
-        <mat-card class="example-card">
+        <mat-card class="preview">
             <mat-card-header>
-              <div mat-card-avatar class="example-header-image" style="background-image: url({{project.logoUrl}});"></div>
-              <mat-card-title>{{project.title}}</mat-card-title>
-              <mat-card-subtitle>{{project.duration}}</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image *ngIf="project.photoUrl" src="{{project.photoUrl}}" alt="{{project.title}}">
-            <mat-card-content>
-              <div [innerHTML]="project.description" class="my-5">
-              </div>
-            </mat-card-content>
-            <mat-card-actions>
-                <div>
-                    <span class="mat-body">Gefördert von</span>
+                <div class="project-title">
+                    {{project.title}}
                 </div>
-                <button mat-button>
-                    <div mat-card-avatar class="example-header-image" style="background-image: url({{project.sponsorLogoUrl}})"></div>
-                </button>
+                <div class="project-logo">
+                    <img [src]="project.project_icon_url" alt="">
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="properties">
+                    <div *ngIf="project.category_id">
+                        <p class="label">Category:</p>
+                        <p class="value">
+                            {{project.category_id}}
+                        </p>
+                    </div>
+                    <div *ngIf="project.project_image_url" class="project-image">
+                        <img [src]="project.project_image_url" alt="">
+                    </div>
+                    <div *ngIf="project.director">
+                        <p class="label">Director:</p>
+                        <p class="value">{{ project.director }}</p>
+                    </div>
+                    <div *ngIf="project.code">
+                        <p class="label">Code:</p>
+                        <p class="value">{{ project.code }}</p>
+                    </div>
+                </div>
+                <div [innerHTML]="project.content" class="preview-content">
+                </div>
+                <div class="sponsor-images">
+                    <img *ngFor="let imageUrl of project.sponsor_images_urls" [src]="imageUrl" alt="">
+                </div>
+            </mat-card-content>
+            <mat-card-actions align="end" *ngIf="isAdmin()">
+                <button mat-button (click)="editProject()">edit</button>
+                <button mat-button (click)="deleteProject(project)">Delete</button>
             </mat-card-actions>
         </mat-card>
     </div>

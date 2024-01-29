@@ -6,4 +6,4 @@ import { Project } from "../models/project.model";
 import { Role } from "../models/role.model";
 import { User } from "../models/user.model";
 
-export type Entity = User | Role | Course | Project | CourseCategory | ProjectCategory | Category;
+export type Entity = User | Role | Course | Project | CourseCategory | ProjectCategory | Category | any;

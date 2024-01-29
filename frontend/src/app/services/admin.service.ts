@@ -10,16 +10,23 @@ export class AdminService {
 
   login(username: string, password: string): boolean {
     if (username === 'admin' && password === 'admin') {
-      // localStorage.setItem('username', username);
-      // localStorage.setItem('password', password);
-      this.router.navigate(['/projects/list']);
+      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('password', password);
+      this.router.navigate(['/courses']);
       return true;
     }
     return false;
   }
 
   isLoggedIn() {
-    // const username = localStorage.getItem('username');
-    // const password = localStorage.getItem('password');
+    const username = sessionStorage.getItem('username');
+    const password = sessionStorage.getItem('password');
+    return !(username === null || password === null);
+  }
+
+  logout() {
+    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('password');
+    this.router.navigate(['/']);
   }
 }

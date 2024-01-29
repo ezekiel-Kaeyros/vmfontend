@@ -4,7 +4,7 @@ export interface ProjectCategory {
     id?: number;
     name: string;
     description: string;
-    projects: Project[];
-    createdAt?: Date;
-    editedAt?: Date;
+    projects?: Project[];
+    created_at?: Date;
+    edited_at?: Date;
 }

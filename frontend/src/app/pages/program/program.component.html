@@ -6,39 +6,36 @@
     
     <div class="content-page">
         <div class="label">
-            <p>
+            <!-- <p>
                 Hier findet ihr unser aktuelles Jahresprogramm: <a routerLink="/program-pdf">Programm 2023 anzeigen</a>.
-            </p>
+            </p> -->
             <p>
                 Wir informieren euch über aktuelle Angebote, alle Entwicklungen und Neuigkeiten zeitnah auf unserem Instagram Account <a href="https://www.instagram.com/bildungswerk_vielfalt/" target="_blank" class="bildungswerk_vielfalt">bildungswerk_vielfalt</a>. Lasst gern ein Abo da, dann seid ihr immer rechtzeitig über alles informiert.
             </p>
             <p>
                 Anmeldung zu allen Kursen unter: <span class="email">bildungswerk-vielfalt@vmdo.de</span>
             </p>
-            <!-- <p class="pdf">
-                <a routerLink="/program-pdf">Programm 2023 Anzeigen</a>
-            </p> -->
         </div>
 
-        <mat-toolbar class="admin-nav">
-            <ul class="nav">
-                <li *ngFor="let category of categories">
-                    <a mat-button>{{ category.name }}</a>
-                </li>
-            </ul>
-        </mat-toolbar>
+            <mat-toolbar class="admin-nav">
+                <ul class="nav">
+                    <li *ngFor="let category of categories">
+                        <a mat-button (click)="filterCategory(category.id)">{{ category.name }}</a>
+                    </li>
+                </ul>
+            </mat-toolbar>
 
 
         <div class="courses">
-            <mat-grid-list [cols]="breakpoint" [gutterSize]="'10'" rowHeight="22rem" (window:resize)="onResize($event)">
-                <mat-grid-tile *ngFor="let course of pagedList">
+            <mat-grid-list [cols]="breakpoint" [gutterSize]="'10'" rowHeight="32rem" (window:resize)="onResize($event)">
+                <mat-grid-tile *ngFor="let course of courses">
                     <mat-card class="example-card" routerLink="/courses/{{course.id}}">
                         <mat-card-header>
-                            <div>
+                            <div class="course-title">
                                 <mat-card-title>{{course.title}}</mat-card-title>
                             </div>
-                              <!-- <mat-card-subtitle>{{course.createdAt | date}}</mat-card-subtitle> -->
-                            <div class="properties">
+                              
+                            <!-- <div class="properties">
                                 <div>
                                   <mat-card-subtitle>Anfangsdatum: {{course.start_date | date: 'medium' }}</mat-card-subtitle>
                                   <mat-card-subtitle>Enddatum: {{course.end_date | date: 'medium' }}</mat-card-subtitle>
@@ -46,19 +43,45 @@
                                 <div>
                                   <mat-card-subtitle>Kursgebühr: {{ course.course_fees | currency: 'EUR' }}</mat-card-subtitle>
                                 </div>
+                            </div> -->
+                            <div class="properties">
+                                <div>
+                                    <p class="label">Datum:</p>
+                                    <p class="value">
+                                        {{course.end_date | date }} - {{course.end_date | date }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="label">Uhrzeit:</p>
+                                    <p class="value">
+                                        {{course.start_time }} - {{course.end_time }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p class="label">Kursgebühr:</p>
+                                    <p class="value">{{ course.course_fees | currency: 'EUR' }}</p>
+                                </div>
+                                <div>
+                                    <p class="label">Adresse:</p>
+                                    <p class="value">{{ course.location }}</p>
+                                </div>
+                                <div>
+                                    <p class="label">Director:</p>
+                                    <p class="value">{{ course.lead }}</p>
+                                </div>
+                                <div>
+                                    <p class="label">Code:</p>
+                                    <p class="value">{{ course.code }}</p>
+                                </div>
                             </div>
                         </mat-card-header>
                         <mat-card-content>
                           <p>
-                            {{course.description}}
+                            {{course.content}}
                           </p>
                         </mat-card-content>
                         <mat-card-actions>
-                          <button mat-button>{{course.author}}</button>
-                            <!-- <button mat-button (click)="learnMore(course)">
-                                <mat-icon>link</mat-icon>
-                                Subscribe
-                            </button> -->
+                          <button mat-button>{{course.director}}</button>
                         </mat-card-actions>
                     </mat-card>
                 </mat-grid-tile>

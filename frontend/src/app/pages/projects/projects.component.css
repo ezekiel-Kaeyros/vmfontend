@@ -141,3 +141,17 @@ mat-card-content p {
 .no-image {
     height: 294px;
 }
+
+.project-date {
+    margin-bottom: 20px;
+}
+.project-date div {
+    color: #FF8F0C;
+    margin-right: 10px;
+}
+
+.project-price {
+    color: #FF8F0C;
+    display: flex;
+    justify-content: space-between;
+}

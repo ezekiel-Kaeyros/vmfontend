@@ -1,5 +1,5 @@
 .create-course {
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-top: 4rem;
 }
@@ -25,19 +25,47 @@
 .form {
     padding-top: 2rem;
     padding-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }
 .mat-caption {
     color: red;
 }
 
-mat-form-field {
-    width: 100%;
+.mat-display-1 span {
+    font-size: 3rem;
 }
 
+mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+.content {
+    min-height: 500px;
+}
+input {
+    color: whitesmoke;
+}
+/*
 mat-card {
     border: 6px solid #ff8f0c;
     background: #36454f;
     color: whitesmoke;
+} */
+mat-card {
+    background: #131212;
+    width: 49% !important;
+}
+
+mat-card-title {
+    text-align: center;
+}
+mat-label, label {
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: 200;
+    padding-bottom: 0.5rem;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
@@ -47,17 +75,23 @@ mat-card {
   
    ::ng-deep.mat-form-field-underline {
     /*change color of underline*/
-    background-color: #ff8f0c !important;
-  } 
+    /* background-color: #979DA4 !important; */
+    border-bottom: 2px solid #979DA4 !important;
+  }
   
   ::ng-deep.mat-form-field-ripple {
    /*change color of underline when focused*/
-   background-color: #ff8f0c !important;
+   border-bottom: 2px solid #979DA4 !important;
+   color: whitesmoke;
   }
 
-  mat-label {
-    color: whitesmoke !important;
-    font-weight: 300;
+.select mat-label {
+    font-size: 1.5rem !important;
+}
+
+mat-label {
+    color: #979DA4 !important;
+    font-weight: 300 !important;
 }
 mat-hint {
       color: #ff8f0c !important;
@@ -82,6 +116,161 @@ mat-card-actions button {
 mat-card-actions button:disabled {
     background: #91877d !important;
 }
+
+.list {
+    width: 100%;
+    text-align: right;
+    cursor: pointer;
+}
+
 mat-form-field select {
     background: #36454f;
+}
+
+.preview h1 {
+    display: flex;
+    width: 134px;
+    height: 27px;
+    flex-direction: column;
+    justify-content: center;
+    color: #A8A8A8;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+mat-card.preview {
+    color: whitesmoke !important;
+}
+.preview mat-card-title {
+    text-align: left !important;
+    color: whitesmoke;
+    margin-bottom: 2.5rem;
+}
+
+.properties div {
+    display: flex;
+    justify-content: space-between;
+}
+.properties .label {
+    color: whitesmoke;
+    margin-right: 1rem;
+    width: 20%;
+}
+.properties .value {
+    color: #91877d;
+}
+
+.properties {
+    margin-bottom: 2.5rem;
+}
+
+
+/* New styles */
+
+.new-form{
+    display: flex !important;
+flex-direction: column !important;
+align-items: flex-start !important;
+gap: 20px !important;
+}
+
+.title1{
+    display: flex !important;
+    padding: var(--Dimensions-Spacing-sm, 8px) var(--Dimensions-Spacing-lg, 16px) !important;
+    gap: var(--Dimensions-Spacing-sm, 8px) !important;
+    align-self: stretch !important;
+    border-bottom: 2px solid #979DA4 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 4%;
+}
+
+.titleKategory{
+    display: flex !important;
+    padding: var(--Dimensions-Spacing-sm, 8px) var(--Dimensions-Spacing-lg, 16px) !important;
+    gap: var(--Dimensions-Spacing-sm, 8px) !important;
+    align-self: stretch !important;
+    border-bottom: 2px solid #979DA4 !important;
+    align-items: flex-start;
+    margin-bottom: 4%;
+}
+
+.titleDate{
+    display: flex !important;
+    padding: var(--Dimensions-Spacing-sm, 8px) var(--Dimensions-Spacing-lg, 16px) !important;
+    gap: var(--Dimensions-Spacing-sm, 8px) !important;
+    align-self: stretch !important;
+    border-bottom: 2px solid #979DA4 !important;
+    margin-bottom: 4%;
+    flex-direction: column;
+}
+
+.subtitle1{
+    display: flex !important;
+height: 24px !important;
+align-items: center !important;
+flex: 1 0 0 !important;
+}
+
+.projName{
+    color: #6C757D !important;
+
+/* body 1 */
+font-family: Poppins !important;
+font-size: 15px !important;
+font-style: normal !important;
+font-weight: 400 !important;
+line-height: normal !important;
+letter-spacing: 0.075px !important;
+}
+
+.inputTitle{
+    color: #6C757D;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.075px;
+    display: flex;
+    height: 24px;
+    align-items: center;
+    flex: 1 0 0;
+    background: #000;
+    border: none;
+    animation: none;
+}
+
+.note{
+    display: flex;
+    color: #ff8f0c;
+    font-size: 12px;
+    justify-content: flex-end;
+    margin-top: -15px;
+}
+
+input[type="time" i] {
+    font-family: monospace;
+    padding-inline-start: 1px;
+    cursor: pointer;
+    align-items: center;
+    display: inline-flex;
+    overflow: hidden;
+    padding: 0px;
+    background: #000;
+    border: none;
+}
+
+.preview{
+    display: flex;
+    width: 488px;
+    height: 902px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    background: #333;
+    
 }

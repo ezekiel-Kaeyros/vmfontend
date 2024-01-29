@@ -8,10 +8,6 @@
     text-align: center;
     font-family: 'Permanent Marker';
 }
-.mat-display-1 {
-    font-family: 'Permanent Marker';
-    color: #ff8f0c;
-}
 .intro, .details {
     padding-left: 3rem;
     padding-right: 3rem;
@@ -26,15 +22,22 @@
 
 }
 
-/* ************ */
-
-.example-header-image {
-    background-size: cover;
+mat-card-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2.5rem;
+}
+.project-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-left: 0;
 }
 
 mat-card {
-    border: 6px solid #ff8f0c;
-    background: #36454f;
+    /* border: 6px solid #ff8f0c; */
+    background: #131212;
     color: whitesmoke;
     margin-top: 1rem;
 }
@@ -43,22 +46,34 @@ mat-card-subtitle {
     color: whitesmoke;
 }
 
-mat-card-content p {
-    font-weight: 300;
-    line-height: 1.7rem;
-    letter-spacing: 0.1em;
-}
-
 mat-card-actions {
+    margin-top: 2rem;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
 }
-
-mat-card-actions span {
-    font-weight: 500 !important;
+.spacer {
+    flex: 1 1 auto;
 }
-/* mat-card-actions:last-of-type button {
+
+mat-card-actions button:first-of-type {
+    font-weight: 500;
+}
+mat-card-actions button:last-of-type {
+    font-weight: 300;
+}
+
+mat-paginator {
+    background: #ff8f0c;
+    color: whitesmoke;
+    border-radius: 4px;
+}
+
+mat-card-title {
+    white-space: nowrap;
+    overflow: hidden;
+}
+mat-card-actions button {
     background: #ff8f0c !important;
     color: whitesmoke !important;
     font-weight: 300;
@@ -69,26 +84,62 @@ mat-card-actions span {
     letter-spacing: 0.2rem;
     text-transform: capitalize;
 }
-mat-card-actions:last-of-type button:last-of-type {
-    background: hsl(19, 100%, 52%) !important;
-} */
-
-button {
-    cursor: default;
-}
-
-mat-card img{
-    object-fit: cover; /*this makes the image in src fit to the size specified below*/
-    height: 400px;
-}
-
-mat-card-title {
-    font-size: 1.9rem !important;
-    font-family: 'Permanent Marker';
-    color: #ff8f0c;
-}
 
 .list {
     text-decoration: underline #ff8f0c;
     text-underline-offset: 0.4rem;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+.preview h1 {
+    color: #91877d !important;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+mat-card.preview {
+    color: whitesmoke !important;
+}
+.preview mat-card-title {
+    text-align: left !important;
+    color: whitesmoke;
+    margin-bottom: 2.5rem;
+}
+
+.properties div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.properties .label {
+    color: whitesmoke;
+    margin-right: 1rem;
+    width: 20%;
+}
+.properties .value {
+    color: #91877d;
+}
+
+.properties {
+    margin-bottom: 2.5rem;
+}
+
+.project-logo img {
+    width: 100px;
+}
+.project-image img {
+    height: 100%;
+}
+.sponsor-images {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.sponsor-images img {
+    width: 100px;
 }

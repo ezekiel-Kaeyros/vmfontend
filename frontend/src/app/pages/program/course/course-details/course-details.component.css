@@ -25,15 +25,10 @@
 mat-card-header {
     display: block;
 }
-.properties {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
 
 mat-card {
-    border: 6px solid #ff8f0c;
-    background: #36454f;
+    /* border: 6px solid #ff8f0c; */
+    background: #131212;
     color: whitesmoke;
     margin-top: 1rem;
 }
@@ -43,9 +38,13 @@ mat-card-subtitle {
 }
 
 mat-card-actions {
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.spacer {
+    flex: 1 1 auto;
 }
 
 mat-card-actions button:first-of-type {
@@ -65,6 +64,17 @@ mat-card-title {
     white-space: nowrap;
     overflow: hidden;
 }
+mat-card-actions button {
+    background: #ff8f0c !important;
+    color: whitesmoke !important;
+    font-weight: 300;
+    margin-left: 0.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    font-family: 'Permanent Marker';
+    letter-spacing: 0.2rem;
+    text-transform: capitalize;
+}
 
 .list {
     text-decoration: underline #ff8f0c;
@@ -74,4 +84,37 @@ mat-card-title {
 a {
     color: whitesmoke;
     text-decoration: none;
+}
+
+.preview h1 {
+    color: #91877d !important;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+mat-card.preview {
+    color: whitesmoke !important;
+}
+.preview mat-card-title {
+    text-align: left !important;
+    color: whitesmoke;
+    margin-bottom: 2.5rem;
+}
+
+.properties div {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+.properties .label {
+    color: whitesmoke;
+    margin-right: 1rem;
+    width: 20%;
+}
+.properties .value {
+    color: #91877d;
+}
+
+.properties {
+    margin-bottom: 2.5rem;
 }

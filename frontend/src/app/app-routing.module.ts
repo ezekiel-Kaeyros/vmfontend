@@ -36,27 +36,50 @@ import { CategoryCreateComponent } from './pages/category/category-create/catego
 import { CategoryListComponent } from './pages/category/category-list/category-list.component';
 import { CategoryDetailsComponent } from './pages/category/category-details/category-details.component';
 import { CategoryEditComponent } from './pages/category/category-edit/category-edit.component';
+import { LoginComponent } from './shared/user/login/login.component';
+import { SignupComponent } from './shared/user/signup/signup.component';
+import { UserListComponent } from './shared/user/user-list/user-list.component';
+import { UserDetailsComponent } from './shared/user/user-details/user-details.component';
+import { UserEditComponent } from './shared/user/user-edit/user-edit.component';
+import { InscriptionComponent } from './pages/inscription/inscription.component';
+import { CourseCategoryListComponent } from './pages/course-category/course-category-list/course-category-list.component';
+import { CourseCategoryCreateComponent } from './pages/course-category/course-category-create/course-category-create.component';
+import { CourseCategoryEditComponent } from './pages/course-category/course-category-edit/course-category-edit.component';
+import { ProjectCategoryListComponent } from './pages/project-category/project-category-list/project-category-list.component';
+import { ProjectCategoryCreateComponent } from './pages/project-category/project-category-create/project-category-create.component';
+import { ProjectCategoryEditComponent } from './pages/project-category/project-category-edit/project-category-edit.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { CourseCategoryDetailsComponent } from './pages/course-category/course-category-details/course-category-details.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'users', component: UserListComponent},
+  {path: 'users/:username', component: UserDetailsComponent},
+  {path: 'users/:username/edit', component: UserEditComponent},
   { path: 'program', component: ProgramComponent },
-  { path: 'courses', component: CourseListComponent },
-  { path: 'courses/create', component: CourseCreateComponent },
+  { path: 'courses', canActivate: [AuthGuard], component: CourseListComponent },
+  { path: 'courses/create', canActivate: [AuthGuard], component: CourseCreateComponent },
   { path: 'courses/:id', component: CourseDetailsComponent },
-  { path: 'courses/:id/edit', component: CourseEditComponent },
+  { path: 'courses/:id/edit', canActivate: [AuthGuard], component: CourseEditComponent },
   { path: 'program-pdf', component: PdfReaderComponent },
   { path: 'education', component: EducationGuidanceComponent},
   { path: 'projects', component: ProjectsComponent },
-  { path: 'projects/list', component: ProjectListComponent },
-  { path: 'projects/create', component: ProjectCreateComponent },
+  { path: 'projects/list', canActivate: [AuthGuard], component: ProjectListComponent },
+  { path: 'projects/create', canActivate: [AuthGuard], component: ProjectCreateComponent },
   { path: 'projects/:id', component: ProjectDetailsComponent },
-  { path: 'projects/:id/edit', component: ProjectEditComponent },
+  { path: 'projects/:id/edit', canActivate: [AuthGuard], component: ProjectEditComponent },
   { path: 'markdown', component: MarkdownComponent },
   { path: 'category', component: CategoryComponent },
-  { path: 'category/list', component: CategoryListComponent },
-  { path: 'category/create', component: CategoryCreateComponent },
-  { path: 'category/:id', component: CategoryDetailsComponent },
-  { path: 'category/:id/edit', component: CategoryEditComponent },
+  { path: 'course-category/list', component: CourseCategoryListComponent },
+  { path: 'course-category/create', component: CourseCategoryCreateComponent },
+  { path: 'course-category/:id', component: CourseCategoryDetailsComponent },
+  { path: 'course-category/:id/edit', component: CourseCategoryEditComponent },
+  { path: 'project-category/list', component: ProjectCategoryListComponent },
+  { path: 'project-category/create', component: ProjectCategoryCreateComponent },
+  { path: 'project-category/:id/edit', component: ProjectCategoryEditComponent },
+  { path: 'inscription/:id', component: InscriptionComponent },
   {
     path: 'toolbox',
     component: ToolboxComponent,

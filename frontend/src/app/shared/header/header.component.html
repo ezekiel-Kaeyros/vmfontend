@@ -44,3 +44,26 @@
     </li>
   </ul>
 </mat-toolbar>
+
+
+<div *ngIf="isAdmin()">
+  <mat-toolbar class="admin-nav">
+      <ul class="nav">
+          <li>
+              <a mat-button routerLink="/courses">Kursliste</a>
+          </li>
+          <li>
+              <a mat-button routerLink="/projects/list">Projektliste</a>
+          </li>
+          <li>
+              <a mat-button routerLink="/course-category/list">Liste der Kurskategorien</a>
+          </li>
+          <li>
+            <a mat-button routerLink="/project-category/list">Liste der Projektkategorien</a>
+          </li>
+          <li class="logout" (click)="logout()">
+              <a mat-button>Abmeldung</a>
+          </li>
+      </ul>
+  </mat-toolbar>
+</div>

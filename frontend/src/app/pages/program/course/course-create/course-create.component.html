@@ -2,87 +2,271 @@
     <div class="intro">
         <h2 class="mat-display-2">Registrieren Sie das Programm mit dem untenstehenden Formular</h2>
     </div>
+    <div *ngIf="showSpinner" class="progress-spinner">
+        <mat-spinner></mat-spinner>
+    </div>
     <div class="form">
         <mat-card>
             <div mat-icon-button mat-card-avatar class="list" routerLink="/courses">
                 <mat-icon>list</mat-icon>
             </div>
-            <!-- <mat-card-header>
-                <button mat-icon-button mat-card-avatar>
-                    <mat-icon>save_as</mat-icon>
-                </button>
-            </mat-card-header> -->
             <mat-card-content>
                 <mat-card-title class="mat-display-1">
-                    <span>Kurs erstellen</span>
+                    <span>Kurs Erstellen</span>
                 </mat-card-title>
-                <form [formGroup]="courseForm" (ngSubmit)="submitForm()">
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Titel</mat-label>
-                            <input matInput formControlName="title" placeholder="Ihr Titel hier">
-                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
-                        </mat-form-field>
+                <div class="new-form">
+                    <form [formGroup]="courseForm" (ngSubmit)="submitForm()">
+                        <div class="mb-2">  
+                            <div class="title1">
+                                <span class="projName">Kurs Titel:</span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="title" label="Project Title"
+                                        placeholder="Ihr Titel hier">
+                                </div>
+                            </div>
+                            <span class="note">Mindestens 4 Zeichen</span>
+                        </div>
+                        <!-- <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">Kategorie:</span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="category_id" label="Project Title"
+                                        placeholder="Kategorie Wählen">
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                              <span class="projName">Kategorie:</span>
+                              <div class="subtitle1">
+                                <select class="inputTitle" formControlName="category_id" placeholder="Kategorie Wählen">
+                                  <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+                                </select>
+                              </div>
+                            </div>
+                        </div>
+                          
+                        <div class="mb-2">
+                            <div class="titleDate">
+                                <span class="projName">Wann</span>
+                                <div class="subtitle1">
+                                    <mat-date-range-input [rangePicker]="picker">
+                                        <input matStartDate formControlName="start_date" placeholder="Start"
+                                            style="color: #fff !important;">
+                                        <input style="color: #fff !important;" matEndDate formControlName="end_date"
+                                            placeholder="Ende" style="color: #fff !important;">
+                                    </mat-date-range-input>
+
+                                    <mat-datepicker-toggle style="color: #fff !important;" matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </div>
+                            </div>
+                            <span class="note">DD/MM/YYYY - DD/MM/YYYY</span>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">Tage und Uhrzeit:</span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="days" label="Project Title"
+                                        placeholder="Tage und Uhrzeit eingeben">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">Wo:</span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="location" label="Project Title"
+                                        placeholder="Adresse">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">U-Std.: </span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="duration" label="Project Title"
+                                        placeholder="Unterrichtsstunde">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="mb-2">
+                            <div class="titleDate">
+                                <span class="projName">Start time</span>
+                                <div class="subtitle1">
+                                    <input type="time" formControlName="start_time" class="form-control" id="start_time"
+                                placeholder="Start time">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="titleDate">
+                                <span class="projName">End time</span>
+                                <div class="subtitle1">
+                                    <input type="time" formControlName="end_time" class="form-control" id="end_time"
+                                placeholder="Start time">
+                                </div>
+                            </div>
+                        </div> -->
+                        
+
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">Kursgebühr:</span>
+                                <div class="subtitle1">
+                                    <input  class="inputTitle" type="number" formControlName="course_fees" placeholder="Kursgebühr">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">Leitung:</span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="director" 
+                                        placeholder="Lieter Name">
+                                </div>
+                            </div>
+                            <span class="note">Mindestens 4 Zeichen</span>
+                        </div>
+                        <div class="mb-2">
+                            <div class="titleKategory">
+                                <span class="projName">Kurs-Nr.:</span>
+                                <div class="subtitle1">
+                                    <input class="inputTitle" formControlName="code" 
+                                        placeholder="Kursnummer">
+                                </div>
+                            </div>
+                            <span class="note">Mindestens 4 Zeichen</span>
+                        </div>
+
+                        
+                        <!-- <div>
+                            <mat-form-field>
+                                <mat-label>Project Title</mat-label>
+                                <input matInput formControlName="title" placeholder="Ihr Titel hier">
+                                <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                            </mat-form-field>
+                        </div> -->
+                        <!-- <div class="select">
+                            <mat-form-field>
+                                <mat-label>Kategory</mat-label>
+                                <select matNativeControl formControlName="category_id">
+                                    <option>None</option>
+                                    <option *ngFor="let category of categories" value="{{ 'category.id' }}">{{ 'category.name' }}</option>
+                                  </select>
+                            </mat-form-field>
+                        </div> -->
+
+                        <!-- <div>
+                            <mat-form-field>
+                                <mat-label>Anfangsdatum - Enddatum</mat-label>
+                                <mat-date-range-input [rangePicker]="picker">
+                                  <input matStartDate formControlName="start_date" placeholder="Start date" style="color: black;">
+                                  <input matEndDate formControlName="end_date" placeholder="End date" style="color: black;">
+                                </mat-date-range-input>
+                                <mat-hint>DD/MM/YYYY - DD/MM/YYYY</mat-hint>
+                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+                        </div> -->
+                        <!-- <div class="form-group">
+                            <label for="start_time">Start time</label>
+                            <input type="time" formControlName="start_time" class="form-control" id="start_time"
+                                placeholder="Start time">
+                        </div>
+                        <div class="form-group">
+                            <label for="end_time">End time</label>
+                            <input type="time" formControlName="end_time" class="form-control" id="end_time"
+                                placeholder="End time">
+                        </div> -->
+
+                        <!-- <div>
+                            <mat-form-field>
+                                <mat-label>Kursgebühr</mat-label>
+                                <input matInput type="number" formControlName="course_fees" placeholder="course fees">
+                            </mat-form-field>
+                        </div> -->
+                        <!-- <div>
+                            <mat-form-field>
+                                <mat-label>Director</mat-label>
+                                <input type="text" matInput formControlName="director" placeholder="director">
+                                <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                            </mat-form-field>
+                        </div> -->
+                        <!-- <div>
+                            <mat-form-field>
+                                <mat-label>Code</mat-label>
+                                <input type="text" matInput formControlName="code" placeholder="Code">
+                                <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
+                            </mat-form-field>
+                        </div> -->
+                        <div class="form-group bg-dark mb-3 content">
+                            <label>Beschreibung</label>
+                            <app-rich-text-editor [control]="contendControl"></app-rich-text-editor>
+                            <!-- <mat-form-field>
+                                <mat-label>Beschreibung</mat-label>
+                                <textarea matInput formControlName="description" cols="30" rows="10"></textarea>
+                                <mat-hint align="end">Mindestens 10 Zeichen</mat-hint>
+                            </mat-form-field> -->
+                        </div>
+
+
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary" [disabled]="courseForm.invalid">
+                                Speichern
+                            </button>
+                        </mat-card-actions>
+                    </form>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+        <mat-card *ngIf="coursePreview$ | async as course" class="preview">
+            <h1>Vorschau</h1>
+            <mat-card-header>
+                <mat-card-title>{{course.title}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="properties">
+                    <div *ngIf="course.start_date">
+                        <p class="label">Wann:</p>
+                        <p class="value">
+                            {{course.end_date | date }} - {{course.end_date | date }}
+                        </p>
                     </div>
-                    <div class="form-group bg-dark mb-3">
-                        <label>Beschreibung</label>
-                        <app-rich-text-editor [control]="descriptionControl"></app-rich-text-editor>
-                        <!-- <mat-form-field>
-                            <mat-label>Beschreibung</mat-label>
-                            <textarea matInput formControlName="description" cols="30" rows="10"></textarea>
-                            <mat-hint align="end">Mindestens 10 Zeichen</mat-hint>
-                        </mat-form-field> -->
+                    <div *ngIf="course.days">
+                        <p class="label">Tage und Uhrzeit:</p>
+                        <p class="value">
+                            {{course.days }}
+                        </p>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Anfangsdatum</mat-label>
-                            <input matInput type="datetime-local" formControlName="start_date" placeholder="start date">
-                        </mat-form-field>
+                    <div *ngIf="course.course_fees">
+                        <p class="label">Kursgebühr:</p>
+                        <p class="value">{{ course.course_fees | currency: 'EUR' }}</p>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Enddatum</mat-label>
-                            <input matInput type="datetime-local" formControlName="end_date" placeholder="end date">
-                        </mat-form-field>
+                    <div *ngIf="course.location">
+                        <p class="label">Wo:</p>
+                        <p class="value">{{ course.location }}</p>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Kursgebühr</mat-label>
-                            <input matInput type="number" formControlName="course_fees" placeholder="end date">
-                        </mat-form-field>
+                    <div *ngIf="course.duration">
+                        <p class="label">U-Std.:</p>
+                        <p class="value">{{ course.duration }}</p>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Link zum Lesen</mat-label>
-                            <input type="url" matInput formControlName="link" placeholder="Ihr URL Kurs hier">
-                            <mat-hint align="end">Nur gültige URL akzeptieren</mat-hint>
-                        </mat-form-field>
+                    <div *ngIf="course.director">
+                        <p class="label">Leitung:</p>
+                        <p class="value">{{ course.director }}</p>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Autor</mat-label>
-                            <input matInput formControlName="author" placeholder="Name des Autors hier">
-                            <mat-hint align="end">Mindestens 4 Zeichen</mat-hint>
-                        </mat-form-field>
+                    <div *ngIf="course.code">
+                        <p class="label">Kurs-Nr.:</p>
+                        <p class="value">{{ course.code }}</p>
                     </div>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Kategory</mat-label>
-                            <select matNativeControl formControlName="category">
-                                <option *ngFor="let category of categories" value="{{ category.id }}">{{ category.name }}</option>
-                              </select>
-                        </mat-form-field>
-                    </div>
-    
-                    <mat-card-actions>
-                        <button
-                            mat-raised-button
-                            color="primary"
-                            [disabled]="courseForm.invalid">
-                            Speichern
-                        </button>
-                    </mat-card-actions>
-                </form>
+                </div>
+                <div [innerHTML]="course.content" class="preview-content">
+                </div>
             </mat-card-content>
         </mat-card>
     </div>

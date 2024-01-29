@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 
 declare var $: any;
 
@@ -15,11 +16,19 @@ export class HeaderComponent implements OnInit {
 
   dropdown: boolean = false;
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private adminService: AdminService) { }
 
   ngOnInit(): void {
     $(document).ready(() => {
     });
+  }
+
+  isAdmin() {
+    return this.adminService.isLoggedIn()
+  }
+
+  logout() {
+    this.adminService.logout();
   }
 
   navOpen() {
