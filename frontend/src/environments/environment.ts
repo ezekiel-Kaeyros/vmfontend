@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://v2202211186717206474.powersrv.de:443'
+  apiUrl: 'http://ec2-18-199-30-192.eu-central-1.compute.amazonaws.com:8000'
   // apiUrl: 'http://127.0.0.1:8000'
 };
 

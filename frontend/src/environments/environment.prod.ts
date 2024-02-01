@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://v2202211186717206474.powersrv.de:443'
+  apiUrl: 'http://ec2-18-199-30-192.eu-central-1.compute.amazonaws.com:8000'
 };
