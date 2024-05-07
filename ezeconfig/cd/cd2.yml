@@ -1,0 +1,92 @@
+name: Deploy to Amazon ECS
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+env:
+  IMAGE_NAME_FRONTEND_COMMUNITIES: eze_communities
+  IMAGE_NAME_BACKEND_COMMUNITIES: backend_eze_communities
+  IMAGE_NAME_LANDING_PAGE: eze_landingpage
+  AWS_REGION: eu-central-1
+  ECS_SERVICE_FRONTEND_COMMUNITIES: front_communities
+  ECS_SERVICE_BACKEND_COMMUNITIES: backend_communities
+  ECS_SERVICE_LANDING_PAGE: landing_page_service
+  ECS_CLUSTER: cluster_ecs_frontend
+  ECS_TASK_DEFINITION_FRONTEND: aws/frontend_communities.json
+  ECS_TASK_DEFINITION_BACKEND: aws/backend_communities.json
+  ECS_TASK_DEFINITION_LANDING_PAGE: aws/landing.json
+  CONTAINER_IMAGE: ezekielkaeyros/vmdo_vmdo-frontend
+  CONTAINER_NAME_FRONTEND: communitie_frontend
+  CONTAINER_NAME_BACKEND: backend_communities
+  CONTAINER_NAME_LANDING_PAGE: landingpage
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for Frontend
+        id: task-def-frontend
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.ECS_TASK_DEFINITION_FRONTEND }}
+          container-name: ${{ env.CONTAINER_NAME_FRONTEND }}
+          image: ${{ env.CONTAINER_IMAGE }}
+
+      - name: Deploy Amazon ECS task definition for Frontend
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-frontend.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_FRONTEND_COMMUNITIES }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for Backend
+        id: task-def-backend
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.ECS_TASK_DEFINITION_BACKEND }}
+          container-name: ${{ env.CONTAINER_NAME_BACKEND }}
+          image: ${{ env.CONTAINER_IMAGE }}
+
+      - name: Deploy Amazon ECS task definition for Backend
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-backend.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_BACKEND_COMMUNITIES }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true
+
+      - name: Fill in the new image ID in the Amazon ECS task definition for Landing Page
+        id: task-def-landing
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.ECS_TASK_DEFINITION_LANDING_PAGE }}
+          container-name: ${{ env.CONTAINER_NAME_LANDING_PAGE }}
+          image: ${{ env.CONTAINER_IMAGE }}
+
+      - name: Deploy Amazon ECS task definition for Landing Page
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def-landing.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE_LANDING_PAGE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true

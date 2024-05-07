@@ -1,0 +1,83 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:eu-central-1:108165532263:task-definition/landingpage:16",
+    "containerDefinitions": [
+        {
+            "name": "landingpage",
+            "image": "ezekielkaeyros/eze_landingpage:latest",
+            "cpu": 205,
+            "memory": 205,
+            "memoryReservation": 205,
+            "portMappings": [
+                {
+                    "name": "landingpage-3001-tcp",
+                    "containerPort": 3000,
+                    "hostPort": 3001,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-create-group": "true",
+                    "awslogs-group": "/ecs/landingpage",
+                    "awslogs-region": "eu-central-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "landingpage",
+    "taskRoleArn": "arn:aws:iam::108165532263:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::108165532263:role/ecsTaskExecutionRole",
+    "revision": 16,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "205",
+    "memory": "205",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2024-03-01T13:45:43.420Z",
+    "registeredBy": "arn:aws:iam::108165532263:user/Dombissi",
+    "tags": []
+}

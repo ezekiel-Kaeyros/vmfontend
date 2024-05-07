@@ -1,0 +1,4 @@
+1-Ont peut naviguer dans la partie admin sans etre oblige de se deconnecter.
+2- le user management n est pas encore fonctionnel.
+3- ajout des cours impossible ainsi que l'ajout des categories...check front end.
+4- mise a jour des cours impossible.
