@@ -39,7 +39,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "backend.kashapp.cloud",
-    "ec2-18-193-182-76.eu-central-1.compute.amazonaws.com:8000"
+    "ec2-18-193-182-76.eu-central-1.compute.amazonaws.com:8000",
 ]
 
 

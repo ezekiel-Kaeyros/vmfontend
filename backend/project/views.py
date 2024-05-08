@@ -45,6 +45,10 @@ def create(request):
             sponsor_images_url = request.data.get("sponsor_images_url")
         else:
             sponsor_images_url = {}
+        if request.data.get("partners_images_url"):
+            partners_images_url = request.data.get("partners_images_url")
+        else:
+            partners_images_url = {}
 
         if not request.data.get("title"):
             return Response(
@@ -65,6 +69,7 @@ def create(request):
                     project_icon_url=project_icon_url,
                     project_image_url=project_image_url,
                     sponsor_images_url=sponsor_images_url,
+                    partners_images_url=partners_images_url,
                     lead=request.data.get("lead"),
                     code=request.data.get("code"),
                     location=request.data.get("location"),
@@ -91,6 +96,7 @@ def create(request):
                     project_icon_url=project_icon_url,
                     project_image_url=project_image_url,
                     sponsor_images_url=sponsor_images_url,
+                    partners_images_url=partners_images_url,
                     lead=request.data.get("lead"),
                     code=request.data.get("code"),
                     location=request.data.get("location"),
@@ -134,6 +140,8 @@ def updatecourse(request, _id):
         projet.project_image_url = request.data.get("project_image_url")
     if request.data.get("sponsor_images_url"):
         projet.sponsor_images_url = request.data.get("sponsor_images_url")
+    if request.data.get("partners_images_url"):
+        projet.partners_images_url = request.data.get("partners_images_url")
     if request.data.get("title"):
         projet.title = request.data.get("title")
     if request.data.get("content"):

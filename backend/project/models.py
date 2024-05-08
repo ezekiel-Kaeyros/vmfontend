@@ -10,6 +10,7 @@ class projetModel(models.Model):
     project_icon_url = models.CharField(max_length=1000, blank=True, null=True)
     project_image_url = models.CharField(max_length=1000, blank=True, null=True)
     sponsor_images_url = models.TextField(blank=True, null=True)
+    partners_images_url = models.TextField(blank=True, null=True)
     lead = models.CharField(max_length=1000, blank=True, null=True)
     code = models.CharField(max_length=1000, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
